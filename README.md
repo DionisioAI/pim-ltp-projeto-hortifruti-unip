@@ -13,7 +13,7 @@ Maybe, in the future, we'll be able to integrate a Data Base to it (and not rely
 
 ------------------------------------------------------------------------------------------------------------------------------
 
-Este projeto em C é um projeto universitário que tem o objetivo de simular um programa para um tipo de negócio de mercearia.
+Este projeto em C é um projeto universitário que tem o objetivo de simular um programa para um tipo de negócio de hortifrúti.
 
 O programa (CLI) deve ser capaz de Criar (clientes, fornecedores, produtos), 
 Ler (valores específicos das estruturas de dados mencionadas anteriormente), 
