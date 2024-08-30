@@ -1,0 +1,40 @@
+Nome do cliente: Robertao
+ 
+Endereco do cliente: rua robertao
+ 
+CPF do cliente: rob4rt40
+ 
+Telefone do cliente: 6666666
+------------------------------------------------------------
+Nome do cliente: Fernanda
+ 
+Endereco do cliente: Rua Ficticia 3
+ 
+CPF do cliente: 456.456.321.87
+ 
+Telefone do cliente: 11944523874
+------------------------------------------------------------
+Nome do cliente: Gabriel
+ 
+Endereco do cliente: Rua Tchurusbango
+ 
+CPF do cliente: 478.658.200.68
+ 
+Telefone do cliente: 1193201247
+------------------------------------------------------------
+Nome do cliente: Antonia
+ 
+Endereco do cliente: Rua Pera Doce, 23
+ 
+CPF do cliente: 10477654894
+ 
+Telefone do cliente: 11940781076
+------------------------------------------------------------
+Nome do cliente: Higot
+ 
+Endereco do cliente: Rua Manga
+ 
+CPF do cliente: 45622000478
+ 
+Telefone do cliente: 1198569932
+------------------------------------------------------------
