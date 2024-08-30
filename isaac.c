@@ -5,6 +5,7 @@
 
 // Declaração de funções
 
+void exit();
 void menuPrincipal();
 void escreverArquivo();
 void lerArquivo();
@@ -137,7 +138,7 @@ void menuPrincipal() {
                 menuPrincipal();
                 break;
             case 5:
-                printf("\n\n\n\n\n\n\n\n\n\n                          _/`.-'`.\n");
+                printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                          _/`.-'`.\n");
                 printf("                _      _/` .  _.'\n");
                 printf("       ..:::::.(_)   /` _.'_./\n");
                 printf("     .oooooooooo\\ \\o/.-'__.'o.\n");
@@ -161,12 +162,14 @@ void menuPrincipal() {
                 printf("");
                 printf("");
 
-                void exit(); // Finaliza o programa
+                exit(0);
                 break;
+                
+                
             default:
                 printf("O programa ainda nao reconhece este comando");
         }
-
+        
 
 }
 

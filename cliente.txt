@@ -38,3 +38,27 @@ CPF do cliente: 45622000478
  
 Telefone do cliente: 1198569932
 ------------------------------------------------------------
+Nome do cliente: assdads
+ 
+Endereco do cliente: bbbbbbb
+ 
+CPF do cliente: vvvvvvv
+ 
+Telefone do cliente: cccccccc
+------------------------------------------------------------
+Nome do cliente: xxxxxxx
+ 
+Endereco do cliente: zzzzzz
+ 
+CPF do cliente: qqqqqq
+ 
+Telefone do cliente: wwwww1
+------------------------------------------------------------
+Nome do cliente: poiuytrew
+ 
+Endereco do cliente: poiuytrew
+ 
+CPF do cliente: poiuytrew
+ 
+Telefone do cliente: poiuytre
+------------------------------------------------------------
