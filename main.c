@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <cjson/cJSON.h>
 
 
 // Declaração de funções
@@ -61,6 +62,7 @@ int main(){
                 break;
             default:
                 printf("O programa ainda nao reconhece este comando");
+                break;
         }
 
 
@@ -184,4 +186,9 @@ void menuPrincipal() {
 - Simular caixas
 - Simular computadores de funcionários
 - Simular servidor
+
+
+
+ARTIGO PARA MANIPULAR DADOS COM ARQUIVOS JSON EM C:
+https://www.geeksforgeeks.org/cjson-json-file-write-read-modify-in-c/
 */

@@ -62,3 +62,11 @@ CPF do cliente: poiuytrew
  
 Telefone do cliente: poiuytre
 ------------------------------------------------------------
+Nome do cliente: ed
+ 
+Endereco do cliente: asdasd
+ 
+CPF do cliente: 6465
+ 
+Telefone do cliente: 111
+------------------------------------------------------------
