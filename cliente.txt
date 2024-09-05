@@ -70,3 +70,11 @@ CPF do cliente: 6465
  
 Telefone do cliente: 111
 ------------------------------------------------------------
+Nome do cliente: juo
+ 
+Endereco do cliente: rua pipi
+ 
+CPF do cliente: 12303504465
+ 
+Telefone do cliente: 4174117
+------------------------------------------------------------
