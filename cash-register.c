@@ -34,13 +34,7 @@ int main() {
         printf("\n\nDeseja buscar um produto especifico (1) ou todos os produtos de nossa lista (2)? ");
         scanf("%i", &escolhaTipoDeBuscaProduto);
         
-        if (escolhaTipoDeBuscaProduto == 1) {
-
-            printf("\n\nQual e o nome do produto que deseja consultar? ");
-            scanf("%s", nomeProdutoConsultaEspecifica);
-
-        } else if (escolhaTipoDeBuscaProduto == 2) {
-            // access the JSON data 
+        // access the JSON data 
 
             FILE *arquivoDeProdutos = fopen("produtos.json", "r"); // FILE *arquivoDeProdutos: Declares a file pointer "arquivoDeProdutos" of type FILE. This pointer will be used to manage the file operations
             if (arquivoDeProdutos == NULL) { 
@@ -48,13 +42,19 @@ int main() {
                 return 1; 
             } 
 
-            // read the file contents into a string 
+        // read the file contents into a string 
             char buffer[10000]; 
             int len = fread(buffer, 1, sizeof(buffer), arquivoDeProdutos); // len contains the number of bytes read 
             fclose(arquivoDeProdutos); 
-            printf("%s", buffer);
+        
+        if (escolhaTipoDeBuscaProduto == 1) {
 
-            /*// parse the JSON data 
+            printf("\n\nQual e o nome do produto que deseja consultar? ");
+            scanf("%s", nomeProdutoConsultaEspecifica);
+
+            // parse the JSON data 
+            // JSON parsing is the process of converting a JSON object in text format to a Javascript object that can be used inside a program
+
             cJSON *json = cJSON_Parse(buffer); // cJSON_Parse returns a pointer to a cJSON object.
             if (json == NULL) { 
             const char *error_ptr = cJSON_GetErrorPtr(); 
@@ -63,7 +63,22 @@ int main() {
             } 
             cJSON_Delete(json); 
             return 1; 
-            } */
+
+            // access the JSON data 
+            cJSON *precoProduto = cJSON_GetObjectItemCaseSensitive(json, "frutas"); 
+            if (cJSON_IsString(precoProduto) && (precoProduto->valuestring != NULL)) { 
+                printf("Preço: %s\n", precoProduto->valuestring); 
+            } 
+        
+            // delete the JSON object 
+            cJSON_Delete(json); 
+            return 0;
+            } 
+
+        } else if (escolhaTipoDeBuscaProduto == 2) {
+            
+            printf("%s", buffer);
+
         }
 
         return 0;
