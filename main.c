@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<string.h>
+#include <string.h>
 #include <sys/stat.h>
 #include "SDC.c"
 #include <direct.h>
@@ -67,20 +67,15 @@ int main()
 
 - Voltar ao menu sempre que executar uma função, podendo fazer diversas operações em apenas um 'run'
 - Conseguir ler um cliente específico (e não entregar todo o .txt inteiro)
-- Aceitar acentuação (UTF-8) ****
+- Aceitar acentuação (UTF-8)
 - Deletar cliente
 - Atualizar informações de cliente
 - Lidar com produtos e fornecedores
-- Simular caixas ****
-- Simular computadores de funcionários ****
-- Simular servidor ****
+- Simular caixas 
+- Simular computadores de funcionários 
+- Simular servidor 
 
 PARA ALTERACAO E LEITURA DE DADOS/ARQUIVOS
 
 - Criar uma funcao que le todas as linhas do arquivo txt e busca pelo parametro especifico que o usuario quer (e.x.: \n Rua: ) e fazer a mesma coisa para atualizar informacoes, nao so pra ler
-
-
-
-ARTIGO PARA MANIPULAR DADOS COM ARQUIVOS JSON EM C:
-https://www.geeksforgeeks.org/cjson-json-file-write-read-modify-in-c/
 */
