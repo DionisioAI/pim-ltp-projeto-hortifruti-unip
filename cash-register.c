@@ -14,8 +14,18 @@ void consultaProdutos();
 int escolhaMenu;
 int escolhaTipoDeBuscaProduto;
 char nomeProdutoConsultaEspecifica[100];
+typedef struct  { // Estrutura dos itens que irão ser armazenados no array do carrinho
+    char nome[100];
+    double preco;
+    int quantidade;
+    int codigo;
+} itensCarrinho;
+
+itensCarrinho carrinhoComItens[100]; // Array do carrinho de compras
 
 int main() {
+
+    system("cls");
 
     printf("CAIXA REGISTRADORA\n\n\n\n\n");
     printf("Digite o numero de acordo com o servico desejado:\n\n");
@@ -29,7 +39,7 @@ int main() {
 
     switch (escolhaMenu)
     {
-    case 1:
+    case 1: // Consultar informacoes de produtos
 
         printf("\n\nDeseja buscar um produto especifico (1) ou todos os produtos de nossa lista (2)? ");
         scanf("%i", &escolhaTipoDeBuscaProduto);
@@ -38,13 +48,13 @@ int main() {
 
             FILE *arquivoDeProdutos = fopen("produtos.json", "r"); // FILE *arquivoDeProdutos: Declares a file pointer "arquivoDeProdutos" of type FILE. This pointer will be used to manage the file operations
             if (arquivoDeProdutos == NULL) { 
-                printf("Error: Unable to open the file.\n"); 
+                printf("Erro: nao foi possivel abrir o arquivo.\n"); 
                 return 1; 
             } 
 
         // read the file contents into a string 
             char buffer[10000]; 
-            int len = fread(buffer, 1, sizeof(buffer), arquivoDeProdutos); // len contains the number of bytes read 
+            int lengthProdutos = fread(buffer, 1, sizeof(buffer), arquivoDeProdutos); // lengthProdutos contains the number of bytes read 
             fclose(arquivoDeProdutos); 
         
         if (escolhaTipoDeBuscaProduto == 1) {
@@ -65,13 +75,33 @@ int main() {
             return 1; 
 
             // access the JSON data 
-            cJSON *precoProduto = cJSON_GetObjectItemCaseSensitive(json, "frutas"); 
-            if (cJSON_IsString(precoProduto) && (precoProduto->valuestring != NULL)) { 
-                printf("Preço: %s\n", precoProduto->valuestring); 
-            } 
+            cJSON *frutas = cJSON_GetObjectItem(json, "frutas");
+            if (!cJSON_IsArray(frutas)) {
+                printf("Error: 'frutas' is not an array.\n");
+                cJSON_Delete(json);
+                return 1;
+            }
+
+            char *ponteiroNomeProdutoConsultaEspecifica = nomeProdutoConsultaEspecifica;
+
+            // Iterate through the array to find the fruit with the given name.
+            cJSON *fruit = NULL;
+            cJSON_ArrayForEach(fruit, frutas) {
+            cJSON *nome = cJSON_GetObjectItem(fruit, "nome");
+            if (cJSON_IsString(nome) && strcmp(nome->valuestring, ponteiroNomeProdutoConsultaEspecifica) == 0) {
+                // If the name matches, get "precoPorQuilograma".
+                cJSON *preco = cJSON_GetObjectItem(fruit, "precoPorQuilograma");
+            if (cJSON_IsNumber(preco)) {
+                printf("The price per kilogram for %s is: %d\n", ponteiroNomeProdutoConsultaEspecifica, preco->valueint);
+            } else {
+                    printf("Error: 'precoPorQuilograma' is not a number.\n");
+            }
+                break;
+            }
+            }
         
-            // delete the JSON object 
-            cJSON_Delete(json); 
+            // delete the JSON object
+            cJSON_Delete(json);
             return 0;
             } 
 
@@ -82,8 +112,8 @@ int main() {
         }
 
         return 0;
-    case 2:
-        /* code */
+    case 2: // Adicionar produto ao carrinho de compras
+        
         return 0;
     case 3:
         /* code */

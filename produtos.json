@@ -2,67 +2,67 @@
     "frutas": [
       {
         "nome": "Banana",
-        "codigo": "11",
+        "codigo": "1",
         "precoPorQuilograma": 10,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Morango",
-        "codigo": "12",
+        "codigo": "2",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Laranja",
-        "codigo": "12",
+        "codigo": "3",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Mamao",
-        "codigo": "12",
+        "codigo": "4",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Melancia",
-        "codigo": "12",
+        "codigo": "5",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Limao",
-        "codigo": "12",
+        "codigo": "6",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Maça",
-        "codigo": "12",
+        "codigo": "7",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Uva",
-        "codigo": "12",
+        "codigo": "8",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Goiaba",
-        "codigo": "12",
+        "codigo": "9",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Abacaxi",
-        "codigo": "12",
+        "codigo": "10",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Manga",
-        "codigo": "12",
+        "codigo": "11",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
@@ -74,37 +74,37 @@
       },
       {
         "nome": "Ameixa",
-        "codigo": "12",
+        "codigo": "13",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Pera",
-        "codigo": "12",
+        "codigo": "14",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Mexerica",
-        "codigo": "12",
+        "codigo": "15",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Maracuja",
-        "codigo": "12",
+        "codigo": "16",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Pessego",
-        "codigo": "12",
+        "codigo": "17",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Abacate",
-        "codigo": "12",
+        "codigo": "18",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       }
@@ -117,13 +117,13 @@
     "legumes": [
       {
         "nome": "Cenoura",
-        "codigo": "21",
+        "codigo": "19",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Abobrinha",
-        "codigo": "22",
+        "codigo": "20",
         "precoPorQuilograma": 4,
         "quantidadeNoEstoque": 0
       },
@@ -135,133 +135,133 @@
       },
       {
         "nome": "Chuchu",
-        "codigo": "21",
+        "codigo": "22",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Abobora",
-        "codigo": "21",
+        "codigo": "23",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Beringela",
-        "codigo": "21",
+        "codigo": "24",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Pepino",
-        "codigo": "21",
+        "codigo": "25",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Tomate",
-        "codigo": "21",
+        "codigo": "26",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Mandioca",
-        "codigo": "21",
+        "codigo": "27",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Beterraba",
-        "codigo": "21",
+        "codigo": "28",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Alho",
-        "codigo": "21",
+        "codigo": "29",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Cebola",
-        "codigo": "21",
+        "codigo": "30",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Batata",
-        "codigo": "21",
+        "codigo": "31",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Batata-doce",
-        "codigo": "21",
+        "codigo": "32",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Inhame",
-        "codigo": "21",
+        "codigo": "33",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Feijao",
-        "codigo": "21",
+        "codigo": "34",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Grao-de-bico",
-        "codigo": "21",
+        "codigo": "35",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Soja",
-        "codigo": "21",
+        "codigo": "36",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Ervilha",
-        "codigo": "21",
+        "codigo": "37",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Milho",
-        "codigo": "21",
+        "codigo": "38",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Arroz",
-        "codigo": "21",
+        "codigo": "39",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Trigo",
-        "codigo": "21",
+        "codigo": "40",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Amendoim",
-        "codigo": "21",
+        "codigo": "41",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Castanhas",
-        "codigo": "21",
+        "codigo": "42",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Nozes",
-        "codigo": "21",
+        "codigo": "43",
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       }
@@ -274,73 +274,73 @@
     "vegetais/verduras": [
       {
         "nome": "Acelga",
-        "codigo": "31",
+        "codigo": "44",
         "precoPorQuilograma": 50,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Agriao",
-        "codigo": "32",
+        "codigo": "45",
         "precoPorQuilograma": 25,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Repolho",
-        "codigo": "32",
+        "codigo": "46",
         "precoPorQuilograma": 25,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Espinafre",
-        "codigo": "32",
+        "codigo": "47",
         "precoPorQuilograma": 25,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Couve",
-        "codigo": "32",
+        "codigo": "48",
         "precoPorQuilograma": 25,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Brocolis",
-        "codigo": "32",
+        "codigo": "49",
         "precoPorQuilograma": 25,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Rucula",
-        "codigo": "32",
+        "codigo": "50",
         "precoPorQuilograma": 25,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Couve",
-        "codigo": "32",
+        "codigo": "51",
         "precoPorQuilograma": 25,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Alface",
-        "codigo": "32",
+        "codigo": "52",
         "precoPorQuilograma": 25,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Couve-flor",
-        "codigo": "32",
+        "codigo": "53",
         "precoPorQuilograma": 25,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Coentro",
-        "codigo": "32",
+        "codigo": "54",
         "precoPorQuilograma": 25,
         "quantidadeNoEstoque": 0
       },
       {
         "nome": "Alcachofra",
-        "codigo": "32",
+        "codigo": "55",
         "precoPorQuilograma": 25,
         "quantidadeNoEstoque": 0
       }
