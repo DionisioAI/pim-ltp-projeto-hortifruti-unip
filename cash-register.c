@@ -11,9 +11,11 @@
 int main();
 void consultaProdutos();
 
+// Variáveis
 int escolhaMenu;
 int escolhaTipoDeBuscaProduto;
 char nomeProdutoConsultaEspecifica[100];
+
 typedef struct  { // Estrutura dos itens que irão ser armazenados no array do carrinho
     char nome[100];
     double preco;
@@ -23,11 +25,28 @@ typedef struct  { // Estrutura dos itens que irão ser armazenados no array do c
 
 itensCarrinho carrinhoComItens[100]; // Array do carrinho de compras
 
+int codigoProduto;
+int unidadesProduto;
+
 int main() {
 
-    system("cls");
+    // access the JSON data 
 
-    printf("CAIXA REGISTRADORA\n\n\n\n\n");
+    FILE *arquivoDeProdutos = fopen("produtos.json", "r"); // FILE *arquivoDeProdutos: Declares a file pointer "arquivoDeProdutos" of type FILE. This pointer will be used to manage the file operations
+    if (arquivoDeProdutos == NULL) { 
+        printf("Erro: nao foi possivel abrir o arquivo.\n"); 
+        return 1; 
+    } 
+
+    // read the file contents into a string 
+
+    char buffer[10000]; 
+    int lengthProdutos = fread(buffer, 1, sizeof(buffer), arquivoDeProdutos); // lengthProdutos contains the number of bytes read 
+    fclose(arquivoDeProdutos); 
+
+    inicio:
+
+    printf("\n\nCAIXA REGISTRADORA\n\n\n\n\n");
     printf("Digite o numero de acordo com o servico desejado:\n\n");
     printf("1. Consultar informacoes de produtos\n");
     printf("2. Adicionar produto ao carrinho de compras\n");
@@ -44,19 +63,6 @@ int main() {
         printf("\n\nDeseja buscar um produto especifico (1) ou todos os produtos de nossa lista (2)? ");
         scanf("%i", &escolhaTipoDeBuscaProduto);
         
-        // access the JSON data 
-
-            FILE *arquivoDeProdutos = fopen("produtos.json", "r"); // FILE *arquivoDeProdutos: Declares a file pointer "arquivoDeProdutos" of type FILE. This pointer will be used to manage the file operations
-            if (arquivoDeProdutos == NULL) { 
-                printf("Erro: nao foi possivel abrir o arquivo.\n"); 
-                return 1; 
-            } 
-
-        // read the file contents into a string 
-            char buffer[10000]; 
-            int lengthProdutos = fread(buffer, 1, sizeof(buffer), arquivoDeProdutos); // lengthProdutos contains the number of bytes read 
-            fclose(arquivoDeProdutos); 
-        
         if (escolhaTipoDeBuscaProduto == 1) {
 
             printf("\n\nQual e o nome do produto que deseja consultar? ");
@@ -69,7 +75,7 @@ int main() {
             if (json == NULL) { 
             const char *error_ptr = cJSON_GetErrorPtr(); 
             if (error_ptr != NULL) { 
-                printf("Error: %s\n", error_ptr); 
+                printf("Erro: %s\n", error_ptr); 
             } 
             cJSON_Delete(json); 
             return 1; 
@@ -113,7 +119,21 @@ int main() {
 
         return 0;
     case 2: // Adicionar produto ao carrinho de compras
-        
+        digitarCodigo:
+        printf("\n\nDigite o codigo do produto (ou digite 0 para consulta-lo): ");
+        scanf("%i", &codigoProduto);
+
+        if (codigoProduto == 0) {
+
+            printf("%s", buffer);
+            goto digitarCodigo;
+            
+        } else {
+            printf("\nQuantas unidades deseja comprar? ");
+            scanf("%i", &unidadesProduto);
+        }
+
+        goto inicio;
         return 0;
     case 3:
         /* code */
