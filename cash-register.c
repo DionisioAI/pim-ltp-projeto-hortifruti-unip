@@ -72,36 +72,32 @@ int main() {
             // JSON parsing is the process of converting a JSON object in text format to a Javascript object that can be used inside a program
 
             cJSON *json = cJSON_Parse(buffer); // cJSON_Parse returns a pointer to a cJSON object.
+
             if (json == NULL) { 
             const char *error_ptr = cJSON_GetErrorPtr(); 
             if (error_ptr != NULL) { 
                 printf("Erro: %s\n", error_ptr); 
-            } 
+            }
             cJSON_Delete(json); 
             return 1; 
 
             // access the JSON data 
             cJSON *frutas = cJSON_GetObjectItem(json, "frutas");
             if (!cJSON_IsArray(frutas)) {
-                printf("Error: 'frutas' is not an array.\n");
+                printf("Erro: 'frutas' nao e um array.\n");
                 cJSON_Delete(json);
                 return 1;
             }
 
             char *ponteiroNomeProdutoConsultaEspecifica = nomeProdutoConsultaEspecifica;
 
-            // Iterate through the array to find the fruit with the given name.
-            cJSON *fruit = NULL;
-            cJSON_ArrayForEach(fruit, frutas) {
-            cJSON *nome = cJSON_GetObjectItem(fruit, "nome");
-            if (cJSON_IsString(nome) && strcmp(nome->valuestring, ponteiroNomeProdutoConsultaEspecifica) == 0) {
-                // If the name matches, get "precoPorQuilograma".
-                cJSON *preco = cJSON_GetObjectItem(fruit, "precoPorQuilograma");
-            if (cJSON_IsNumber(preco)) {
-                printf("The price per kilogram for %s is: %d\n", ponteiroNomeProdutoConsultaEspecifica, preco->valueint);
-            } else {
-                    printf("Error: 'precoPorQuilograma' is not a number.\n");
-            }
+            // Iterate through the array to find the fruta with the given name.
+            cJSON *fruta = NULL;
+            cJSON_ArrayForEach(fruta, frutas) {
+            cJSON *nome = cJSON_GetObjectItem(fruta, "nome");
+            
+            printf("Nome da fruta: %s\n", nome->valuestring);
+            
                 break;
             }
             }
@@ -109,9 +105,7 @@ int main() {
             // delete the JSON object
             cJSON_Delete(json);
             return 0;
-            } 
-
-        } else if (escolhaTipoDeBuscaProduto == 2) {
+            } else {
             
             printf("%s", buffer);
 
@@ -136,25 +130,29 @@ int main() {
         goto inicio;
         return 0;
     case 3:
-        /* code */
+        printf("\n\nAinda nao, corno");
         return 0;
     case 4:
-        /* code */
+        printf("\n\nAinda nao, corno");
         return 0;
     case 5:
-        /* code */
+        printf("\n\nAinda nao, corno");
         return 0;
     case 6:
-        /* code */
+        printf("\n\nAinda nao, corno");
         return 0;
     
     default:
         printf("Nao ha um servico correspondente ao caracter digitado. Tente novamente");
         return 0;
-    }
 
     return 0;
+
+    }
 }
+    
+
+
 
 /*REQUISITOS
 
