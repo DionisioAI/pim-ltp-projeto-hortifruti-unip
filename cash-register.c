@@ -9,12 +9,9 @@
 
 // Funções
 int main();
-void consultaProdutos();
 
 // Variáveis
 int escolhaMenu;
-int escolhaTipoDeBuscaProduto;
-char nomeProdutoConsultaEspecifica[100];
 
 typedef struct  { // Estrutura dos itens que irão ser armazenados no array do carrinho
     char nome[100];
@@ -30,15 +27,15 @@ int unidadesProduto;
 
 int main() {
 
-    // access the JSON data 
+    // Access the JSON data 
 
-    FILE *arquivoDeProdutos = fopen("produtos.json", "r"); // FILE *arquivoDeProdutos: Declares a file pointer "arquivoDeProdutos" of type FILE. This pointer will be used to manage the file operations
+    FILE *arquivoDeProdutos = fopen("produtos.json", "r"); // FILE *arquivoDeProdutos: declares a file pointer "arquivoDeProdutos" of type FILE. This pointer will be used to manage the file operations
     if (arquivoDeProdutos == NULL) { 
         printf("Erro: nao foi possivel abrir o arquivo.\n"); 
         return 1; 
     } 
 
-    // read the file contents into a string 
+    // Read the file contents into a string 
 
     char buffer[10000]; 
     int lengthProdutos = fread(buffer, 1, sizeof(buffer), arquivoDeProdutos); // lengthProdutos contains the number of bytes read 
@@ -46,7 +43,7 @@ int main() {
 
     inicio:
 
-    printf("\n\nCAIXA REGISTRADORA\n\n\n\n\n");
+    printf("\n\n\nCAIXA REGISTRADORA\n\n\n");
     printf("Digite o numero de acordo com o servico desejado:\n\n");
     printf("1. Consultar informacoes de produtos\n");
     printf("2. Adicionar produto ao carrinho de compras\n");
@@ -60,61 +57,12 @@ int main() {
     {
     case 1: // Consultar informacoes de produtos
 
-        printf("\n\nDeseja buscar um produto especifico (1) ou todos os produtos de nossa lista (2)? ");
-        scanf("%i", &escolhaTipoDeBuscaProduto);
-        
-        if (escolhaTipoDeBuscaProduto == 1) {
+        printf("%s", buffer);
+        goto inicio;
 
-            printf("\n\nQual e o nome do produto que deseja consultar? ");
-            scanf("%s", nomeProdutoConsultaEspecifica);
-
-            // parse the JSON data 
-            // JSON parsing is the process of converting a JSON object in text format to a Javascript object that can be used inside a program
-
-            cJSON *json = cJSON_Parse(buffer); // cJSON_Parse returns a pointer to a cJSON object.
-
-            if (json == NULL) { 
-            const char *error_ptr = cJSON_GetErrorPtr(); 
-            if (error_ptr != NULL) { 
-                printf("Erro: %s\n", error_ptr); 
-            }
-            cJSON_Delete(json); 
-            return 1; 
-
-            // access the JSON data 
-            cJSON *frutas = cJSON_GetObjectItem(json, "frutas");
-            if (!cJSON_IsArray(frutas)) {
-                printf("Erro: 'frutas' nao e um array.\n");
-                cJSON_Delete(json);
-                return 1;
-            }
-
-            char *ponteiroNomeProdutoConsultaEspecifica = nomeProdutoConsultaEspecifica;
-
-            // Iterate through the array to find the fruta with the given name.
-            cJSON *fruta = NULL;
-            cJSON_ArrayForEach(fruta, frutas) {
-            cJSON *nome = cJSON_GetObjectItem(fruta, "nome");
-            
-            printf("Nome da fruta: %s\n", nome->valuestring);
-            
-                break;
-            }
-            }
-        
-            // delete the JSON object
-            cJSON_Delete(json);
-            return 0;
-            } else {
-            
-            printf("%s", buffer);
-
-        }
-
-        return 0;
     case 2: // Adicionar produto ao carrinho de compras
-        digitarCodigo:
-        printf("\n\nDigite o codigo do produto (ou digite 0 para consulta-lo): ");
+
+        printf("\n\nDigite o codigo do produto: ");
         scanf("%i", &codigoProduto);
 
         if (codigoProduto == 0) {
@@ -141,7 +89,6 @@ int main() {
     case 6:
         printf("\n\nAinda nao, corno");
         return 0;
-    
     default:
         printf("Nao ha um servico correspondente ao caracter digitado. Tente novamente");
         return 0;
@@ -149,8 +96,23 @@ int main() {
     return 0;
 
     }
+
 }
     
+int adicionarItem(itensCarrinho carrinhoComItens[100], int *numItens, ItensCarrinho novoItem) {
+
+    if (*numItens >= MAX_ITEMS) {
+        printf("Carrinho cheio! Não é possível adicionar mais itens.\n");
+        return -1; // Carrinho cheio
+    }
+    
+    // Adiciona o novo item ao carrinho
+    carrinho[*numItens] = novoItem;
+    (*numItens)++; // Incrementa o número de itens
+    return 0; // Sucesso
+
+    
+}
 
 
 

@@ -1,10 +1,11 @@
-{
+{ 
+
     "frutas": [
       {
         "nome": "Banana",
         "codigo": "1",
-        "precoPorQuilograma": 10,
-        "quantidadeNoEstoque": 0
+        "precoPorQuilograma": 10.5,
+        "quantidadeNoEstoque": 3
       },
       {
         "nome": "Morango",
@@ -37,7 +38,7 @@
         "quantidadeNoEstoque": 0
       },
       {
-        "nome": "Maça",
+        "nome": "Maca",
         "codigo": "7",
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
@@ -108,11 +109,11 @@
         "precoPorQuilograma": 20,
         "quantidadeNoEstoque": 0
       }
-    ]
-}
+    ],
 
 
-{
+
+
     "legumes": [
       {
         "nome": "Cenoura",
@@ -264,12 +265,12 @@
         "precoPorQuilograma": 15,
         "quantidadeNoEstoque": 0
       }
-    ]
-}
+    ],
 
 
-{
-    "vegetais/verduras": [
+
+
+    "vegetaisVerduras": [
       {
         "nome": "Acelga",
         "codigo": "44",
