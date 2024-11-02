@@ -1,289 +1,500 @@
 Frutas:
 
+Nome  
+Banana  
+Codigo  
+1  
+Preco por quilograma  
+10.5  
+Quantidade no estoque  
+3  
 
+Nome  
+Morango 
+Codigo  
+2  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
+Nome  
+Laranja  
+Codigo  
+3  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Banana
-Código: 1
-Preço por Quilograma: 10.5
-Quantidade no Estoque: 3
+Nome  
+Mamao  
+Codigo  
+4  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Morango
-Código: 2
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Melancia  
+Codigo  
+5  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Laranja
-Código: 3
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Limao  
+Codigo  
+6  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Mamao
-Código: 4
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Maca  
+Codigo  
+7  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Melancia
-Código: 5
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Uva  
+Codigo  
+8  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Limao
-Código: 6
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Goiaba  
+Codigo  
+9  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Maca
-Código: 7
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Abacaxi  
+Codigo  
+10  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Uva
-Código: 8
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Manga  
+Codigo  
+11  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Goiaba
-Código: 9
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Kiwi  
+Codigo  
+12  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Abacaxi
-Código: 10
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Ameixa  
+Codigo  
+13  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Manga
-Código: 11
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Pera  
+Codigo  
+14  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Kiwi
-Código: 12
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Mexerica  
+Codigo  
+15  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Ameixa
-Código: 13
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Maracuja  
+Codigo  
+16  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Pera
-Código: 14
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Pessego  
+Codigo  
+17  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
-Nome: Mexerica
-Código: 15
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
-
-Nome: Maracuja
-Código: 16
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
-
-Nome: Pessego
-Código: 17
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
-
-Nome: Abacate
-Código: 18
-Preço por Quilograma: 20
-Quantidade no Estoque: 0
+Nome  
+Abacate  
+Codigo  
+18  
+Preco por quilograma  
+20  
+Quantidade no estoque  
+0  
 
 Legumes:
 
+Nome  
+Cenoura  
+Codigo  
+19  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
+Nome  
+Abobrinha  
+Codigo  
+20  
+Preco por quilograma  
+4
+Quantidade no estoque  
+0  
 
+Nome  
+Quiabo  
+Codigo  
+21  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Cenoura
-Código: 19
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Chuchu  
+Codigo  
+22  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Abobrinha
-Código: 20
-Preço por Quilograma: 4
-Quantidade no Estoque: 0
+Nome  
+Abobora  
+Codigo  
+23  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Quiabo
-Código: 21
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Beringela  
+Codigo  
+24  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Chuchu
-Código: 22
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Pepino  
+Codigo  
+25  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Abobora
-Código: 23
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Tomate  
+Codigo  
+26  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Beringela
-Código: 24
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Mandioca  
+Codigo  
+27  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Pepino
-Código: 25
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Beterraba  
+Codigo  
+28  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Tomate
-Código: 26
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Alho  
+Codigo  
+29  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Mandioca
-Código: 27
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Cebola  
+Codigo  
+30  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Beterraba
-Código: 28
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Batata  
+Codigo  
+31  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Alho
-Código: 29
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Batata-doce  
+Codigo  
+32  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Cebola
-Código: 30
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Inhame  
+Codigo  
+33  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Batata
-Código: 31
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Feijao  
+Codigo  
+34  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Batata-doce
-Código: 32
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Grao-de-bico  
+Codigo  
+35  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Inhame
-Código: 33
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Soja  
+Codigo  
+36  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Feijao
-Código: 34
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Ervilha  
+Codigo  
+37  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Grao-de-bico
-Código: 35
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Milho  
+Codigo  
+38  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Soja
-Código: 36
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Arroz  
+Codigo  
+39  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Ervilha
-Código: 37
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Trigo  
+Codigo  
+40  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Milho
-Código: 38
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Amendoim  
+Codigo  
+41  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Arroz
-Código: 39
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Castanhas  
+Codigo  
+42  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0  
 
-Nome: Trigo
-Código: 40
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
-
-Nome: Amendoim
-Código: 41
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
-
-Nome: Castanhas
-Código: 42
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
-
-Nome: Nozes
-Código: 43
-Preço por Quilograma: 15
-Quantidade no Estoque: 0
+Nome  
+Nozes  
+Codigo  
+43  
+Preco por quilograma  
+15  
+Quantidade no estoque  
+0 
 
 Vegetais e Verduras:
 
+Nome  
+Acelga  
+Codigo  
+44  
+Preco por quilograma  
+50  
+Quantidade no estoque  
+0  
 
+Nome  
+Agriao  
+Codigo  
+45  
+Preco por quilograma  
+25  
+Quantidade no estoque  
+0  
 
+Nome  
+Repolho  
+Codigo  
+46  
+Preco por quilograma  
+25  
+Quantidade no estoque  
+0  
 
-Nome: Acelga
-Código: 44
-Preço por Quilograma: 50
-Quantidade no Estoque: 0
+Nome  
+Espinafre  
+Codigo  
+47  
+Preco por quilograma  
+25  
+Quantidade no estoque  
+0  
 
-Nome: Agriao
-Código: 45
-Preço por Quilograma: 25
-Quantidade no Estoque: 0
+Nome  
+Couve  
+Codigo  
+48  
+Preco por quilograma  
+25  
+Quantidade no estoque  
+0  
 
-Nome: Repolho
-Código: 46
-Preço por Quilograma: 25
-Quantidade no Estoque: 0
+Nome  
+Brocolis  
+Codigo  
+49  
+Preco por quilograma  
+25  
+Quantidade no estoque  
+0  
 
-Nome: Espinafre
-Código: 47
-Preço por Quilograma: 25
-Quantidade no Estoque: 0
+Nome  
+Rucula  
+Codigo  
+50  
+Preco por quilograma  
+25  
+Quantidade no estoque  
+0  
 
-Nome: Couve
-Código: 48
-Preço por Quilograma: 25
-Quantidade no Estoque: 0
+Nome  
+Couve  
+Codigo  
+51  
+Preco por quilograma  
+25  
+Quantidade no estoque  
+0  
 
-Nome: Brocolis
-Código: 49
-Preço por Quilograma: 25
-Quantidade no Estoque: 0
+Nome  
+Alface  
+Codigo  
+52  
+Preco por quilograma  
+25  
+Quantidade no estoque  
+0  
 
-Nome: Rucula
-Código: 50
-Preço por Quilograma: 25
-Quantidade no Estoque: 0
+Nome  
+Couve-flor  
+Codigo  
+53  
+Preco por quilograma  
+25  
+Quantidade no estoque  
+0  
 
-Nome: Couve
-Código: 51
-Preço por Quilograma: 25
-Quantidade no Estoque: 0
+Nome  
+Coentro  
+Codigo  
+54  
+Preco por quilograma  
+25  
+Quantidade no estoque  
+0  
 
-Nome: Alface
-Código: 52
-Preço por Quilograma: 25
-Quantidade no Estoque: 0
-
-Nome: Couve-flor
-Código: 53
-Preço por Quilograma: 25
-Quantidade no Estoque: 0
-
-Nome: Coentro
-Código: 54
-Preço por Quilograma: 25
-Quantidade no Estoque: 0
-
-Nome: Alcachofra
-Código: 55
-Preço por Quilograma: 25
-Quantidade no Estoque: 0
+Nome  
+Alcachofra  
+Codigo  
+55  
+Preco por quilograma  
+25  
+Quantidade no estoque  
+0  
