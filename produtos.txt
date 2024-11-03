@@ -389,7 +389,17 @@ Preco por quilograma
 Quantidade no estoque  
 0 
 
-Vegetais e Verduras:
+Vegetais e verduras (hortaliças):
+
+Nome
+Manjericao
+Codigo  
+55  
+Preco por quilograma  
+50  
+Quantidade no estoque  
+0  
+
 
 Nome  
 Acelga  
