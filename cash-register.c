@@ -179,25 +179,33 @@ void consultar_carrinho() {
     
     for (int i = 0; i < numero_de_produtos_no_carrinho; i++) {
 
-        indice = i + 1;
-        
-        printf("Produto %d: \n\n", i + 1);
+        int indice = i + 1;
+        carrinho_com_itens[i].indice = indice;
+
+        printf("Produto %d: \n\n", indice);
         printf("Nome: %s", carrinho_com_itens[i].nome);
         printf("\nPreço por quilograma: R$ %.2f\n", carrinho_com_itens[i].preco);
         printf("Quantidade (em gramas) no carrinho: %d\n", carrinho_com_itens[i].quantidade);
         printf("Código: %d\n\n", carrinho_com_itens[i].codigo);
     }
 
-    exibir_informacao();
+    exibir_informacao("padrao");
 
     }
 
 }
 
-void exibir_informacao() {
-    printf("\nPressione Enter para voltar ao menu...");
-    fflush(stdin);
-    getchar();
+void exibir_informacao(char mensagem[50]) {
+    if (mensagem == "padrao") {
+        printf("\nPressione Enter para voltar ao menu...");
+        fflush(stdin);
+        getchar();
+    } else if (mensagem == "continuar") {
+        printf("\nPressione Enter para continuar...");
+        fflush(stdin);
+        getchar();
+    }
+
 }
 
 int consultar_produtos() {
@@ -290,7 +298,7 @@ int consultar_produtos() {
 
     }
     
-    exibir_informacao();
+    exibir_informacao("padrao");
     fclose(arquivo_produtos);
     return 0;
 
@@ -299,23 +307,29 @@ int consultar_produtos() {
 int excluir_produto() {
 
     int produtos_a_deletar;
+    // int 
 
     if (numero_de_produtos_no_carrinho == 0) {
         system("cls");
         printf("Você ainda não tem produtos para excluir");
-        exibir_informacao();
+        exibir_informacao("padrao");
     } else {
        consultar_carrinho();
        printf("Quer deletar quantos produtos? ");
        scanf("%i", &produtos_a_deletar);
 
-       char nomes[produtos_a_deletar][100];
+       int indices[produtos_a_deletar];
+       numero_de_produtos_no_carrinho = numero_de_produtos_no_carrinho - produtos_a_deletar;
 
-       printf("Escreva o número dos produtos que deseja excluir: \n\n");
+       printf("Escreva o número do(s) produto(s) que deseja excluir: \n\n");
 
        for (size_t i = 0; i < produtos_a_deletar; i++) {
-        scanf("%s", nomes[i]);
+        scanf("%i", indices[i]);
        }
+
+       /*while (produtos_a_deletar) {
+        
+       }*/
 
     }
 
