@@ -8,7 +8,7 @@
 // funções
 int adicionar_produto();
 void consultar_carrinho();
-void exibir_informacao();
+void exibir_informacao(char mensagem[50]);
 int consultar_produtos();
 int excluir_produto();
 
