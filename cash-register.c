@@ -3,21 +3,23 @@
 #include <string.h>
 #include <ctype.h>
 #include <windows.h>
+#include <locale.h>
 
-// FunÃ§Ãµes
+
+// funcões
 int adicionar_produto();
-void consultar_carrinho();
-void exibir_informacao();
+int consultar_carrinho();
+void exibir_informacao(char mensagem[50]);
 int consultar_produtos();
-int excluir_produto();
+int excluir_produtos();
 
-// VariÃ¡veis
+// variáveis
 int escolha_menu;
 int codigo_produto;
 int unidades_produto;
 int numero_de_produtos_no_carrinho = 0;
 
-// VariÃ¡veis especiais
+// variáveis especiais
 FILE* arquivo_produtos;
 typedef struct {
     char nome[100];
@@ -28,6 +30,8 @@ typedef struct {
 item_carrinho carrinho_com_itens[100]; // array do carrinho de compras
 
 int main() {
+
+    setlocale(LC_ALL, "Portuguese");
 
     int menu = 1;
 
@@ -43,8 +47,8 @@ int main() {
     // system("cls");
 
     printf("CAIXA REGISTRADORA\n\n\n");
-    printf("Digite o numero de acordo com o servico desejado:\n\n");
-    printf("1. Consultar informacoes de produtos\n");
+    printf("Digite o número de acordo com o serviço desejado:\n\n");
+    printf("1. Consultar informações de produtos\n");
     printf("2. Adicionar produto ao carrinho de compras\n");
     printf("3. Excluir itens do carrinho de compras\n");
     printf("4. Consultar carrinho de compras\n");
@@ -61,19 +65,19 @@ int main() {
         adicionar_produto();
         break;
     case 3:
-        printf("\n\nEssa funcionalidade ainda nao esta disponivel");
+        excluir_produtos();
         break;
     case 4:
         consultar_carrinho();
         break;
     case 5:
-        printf("\n\nEssa funcionalidade ainda nao esta disponivel");
+        printf("\n\nEssa funcionalidade ainda não está disponível\n");
         break;
     case 6:
-        printf("\n\nEssa funcionalidade ainda nao esta disponivel");
+        printf("\n\nEssa funcionalidade ainda não está disponível\n");
         break;
     default:
-        printf("Nao ha um servico correspondente ao caracter digitado. Tente novamente\n");
+        printf("Não há um serviço correspondente ao caracter digitado. Tente novamente\n");
         break;
     }
 
@@ -119,13 +123,13 @@ int adicionar_produto() {
                 if (strstr(linha, "Codigo") != NULL) {
                     fgets(linha, sizeof(linha), arquivo_produtos);
                     codigo = strtol(linha, &endpointer, 10);
-                    printf("\nCodigo: %li", codigo);
+                    printf("\nCódigo: %li", codigo);
                 }
                 
                 if (strstr(linha, "Preco por quilograma") != NULL) {
                     fgets(linha, sizeof(linha), arquivo_produtos);
                     preco_por_quilograma = strtod(linha, &endpointer);
-                    printf("\nPreco por quilograma: R$ %.2f", preco_por_quilograma);
+                    printf("\nPreço por quilograma: R$ %.2f", preco_por_quilograma);
                 }
                 
                 if (strstr(linha, "Quantidade no estoque") != NULL) {
@@ -149,11 +153,11 @@ int adicionar_produto() {
 
     if (!resultado_busca) {
         system("cls");
-        printf("Item '%s' nao encontrado.\n", produto);
-        exibir_informacao();
+        printf("Item '%s' não encontrado.\n", produto);
+        exibir_informacao("padrao");
     } else {
         printf("\nItem adicionado ao carrinho");
-        exibir_informacao();
+        exibir_informacao("padrao");
         system("cls");
     }
 
@@ -162,13 +166,14 @@ int adicionar_produto() {
     
 }
 
-void consultar_carrinho() {
+int consultar_carrinho() {
 
     system("cls");
 
     if (numero_de_produtos_no_carrinho == 0) {
-        printf("Voce ainda nao tem nenhum produto adicionado");
-        exibir_informacao();
+        printf("Você ainda não tem nenhum produto adicionado");
+        exibir_informacao("padrao");
+        return 0;
     } else {
 
     printf("Carrinho de compras\n\n\n");
@@ -176,21 +181,31 @@ void consultar_carrinho() {
     for (int i = 0; i < numero_de_produtos_no_carrinho; i++) {
         printf("Produto %d: \n\n", i + 1);
         printf("Nome: %s", carrinho_com_itens[i].nome);
-        printf("\nPreco por quilograma: R$ %.2f\n", carrinho_com_itens[i].preco);
+        printf("\nPreço por quilograma: R$ %.2f\n", carrinho_com_itens[i].preco);
         printf("Quantidade (em gramas) no carrinho: %d\n", carrinho_com_itens[i].quantidade);
-        printf("Codigo: %d\n\n", carrinho_com_itens[i].codigo);
+        printf("Código: %d\n\n", carrinho_com_itens[i].codigo);
     }
 
-    exibir_informacao();
+    exibir_informacao("padrao");
 
     }
+
+    return 0;
 
 }
 
-void exibir_informacao() {
-    printf("\nPressione Enter para voltar ao menu...");
-    fflush(stdin);
-    getchar();
+void exibir_informacao(char mensagem[50]) {
+
+    if (mensagem == "padrao") {
+        printf("\nPressione Enter para voltar ao menu...");
+        fflush(stdin);
+        getchar();
+
+    } else if (mensagem == "continuar") {
+        printf("\nPressione Enter para continuar...");
+        fflush(stdin);
+        getchar();        
+    }
 }
 
 int consultar_produtos() {
@@ -221,13 +236,13 @@ int consultar_produtos() {
     buscas_pendentes = quantidade_de_consultas;
 
     if (quantidade_de_consultas > 10) {
-        printf("\nNao e possivel realizar %i consultas de uma vez. O numero maximo de consultas e 10", quantidade_de_consultas);
+        printf("\nNao é possível realizar %i consultas de uma vez. O número máximo de consultas é 10", quantidade_de_consultas);
         printf("\n\nPressione Enter para tentar novamente...");
         fflush(stdin);
         getchar();
         goto pergunta;
     } else if (quantidade_de_consultas <= 0) {
-        printf("\n\"%i\" nao e um numero valido", quantidade_de_consultas);
+        printf("\n\"%i\" não é um número válido", quantidade_de_consultas);
         printf("\n\nPressione Enter para tentar novamente...");
         fflush(stdin);
         getchar();
@@ -257,13 +272,13 @@ int consultar_produtos() {
                 if (strstr(linha, "Codigo") != NULL) {
                     fgets(linha, sizeof(linha), arquivo_produtos);
                     codigo = strtol(linha, &endpointer, 10);
-                    printf("\nCodigo: %li", codigo);
+                    printf("\nCódigo: %li", codigo);
                 }
                 
                 if (strstr(linha, "Preco por quilograma") != NULL) {
                     fgets(linha, sizeof(linha), arquivo_produtos);
                     preco_por_quilograma = strtod(linha, &endpointer);
-                    printf("\nPreco por quilograma: R$ %.2f", preco_por_quilograma);
+                    printf("\nPreço por quilograma: R$ %.2f", preco_por_quilograma);
                 }
                 
                 if (strstr(linha, "Quantidade no estoque") != NULL) {
@@ -283,16 +298,59 @@ int consultar_produtos() {
 
     }
     
-    exibir_informacao();
+    exibir_informacao("padrao");
     fclose(arquivo_produtos);
     return 0;
 
 }
 
-int excluir_produto() {
+int excluir_produtos() {
 
-    
+    int produtos_a_deletar;
+
+    if (numero_de_produtos_no_carrinho == 0) {
+        system("cls");
+        printf("Você ainda não tem produtos para excluir");
+        exibir_informacao("padrao");
+        return 0;
+    } else {
+       consultar_carrinho();
+       printf("Quer deletar quantos produtos? ");
+       scanf("%i", &produtos_a_deletar);
+
+       int codigos_dos_produtos_a_deletar[produtos_a_deletar + 1];
+       numero_de_produtos_no_carrinho = numero_de_produtos_no_carrinho - produtos_a_deletar;
+
+       printf("Escreva o código do(s) produto(s) que deseja excluir: \n\n");
+
+       for (size_t i = 0; i < produtos_a_deletar; i++) {
+        scanf("%i", codigos_dos_produtos_a_deletar[i]);
+       }
+
+      // Loop through each item in the cart and check if it needs to be deleted
+        for (int i = 0; i < numero_de_produtos_no_carrinho; i++) {
+            for (int j = 0; j < produtos_a_deletar; j++) {
+                if (carrinho_com_itens[i].codigo == codigos_dos_produtos_a_deletar[j]) {
+                    // Shift items to delete the current item
+                    for (int k = i; k < numero_de_produtos_no_carrinho - 1; k++) {
+                        carrinho_com_itens[k] = carrinho_com_itens[k + 1];
+                    }
+                    numero_de_produtos_no_carrinho--; // Decrease cart size
+                    i--; // Stay at the same index to check the new item at this position
+                    break;
+                }
+            }
+        }
+
+        printf("\nProduto(s) excluído(s) com sucesso!\n");
+    }
+
+    return 0;
+
 }
+
+
+
 
 
 /*REQUISITOS
