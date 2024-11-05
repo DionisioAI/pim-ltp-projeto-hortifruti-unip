@@ -506,4 +506,4 @@ Codigo
 Preco por quilograma  
 25  
 Quantidade no estoque  
-0  
+13 
