@@ -5,7 +5,8 @@
 #include <windows.h>
 #include <locale.h>
 
-// funções
+
+// funcões
 int adicionar_produto();
 int consultar_carrinho();
 void exibir_informacao(char mensagem[50]);
@@ -131,7 +132,6 @@ int adicionar_produto() {
                     printf("\nPreço por quilograma: R$ %.2f", preco_por_quilograma);
                 }
                 
-                
                 if (strstr(linha, "Quantidade no estoque") != NULL) {
                     fgets(linha, sizeof(linha), arquivo_produtos);
                     estoque = strtol(linha, &endpointer, 10);
@@ -179,7 +179,6 @@ int consultar_carrinho() {
     printf("Carrinho de compras\n\n\n");
     
     for (int i = 0; i < numero_de_produtos_no_carrinho; i++) {
-
         printf("Produto %d: \n\n", i + 1);
         printf("Nome: %s", carrinho_com_itens[i].nome);
         printf("\nPreço por quilograma: R$ %.2f\n", carrinho_com_itens[i].preco);
@@ -198,18 +197,14 @@ int consultar_carrinho() {
 void exibir_informacao(char mensagem[50]) {
 
     if (mensagem == "padrao") {
-            printf("\nPressione Enter para voltar ao menu...");
-            fflush(stdin);
-            getchar();
+        printf("\nPressione Enter para voltar ao menu...");
+        fflush(stdin);
+        getchar();
 
     } else if (mensagem == "continuar") {
         printf("\nPressione Enter para continuar...");
         fflush(stdin);
-        getchar();
-    } else if (mensagem == "continuar") {
-        printf("\nPressione Enter para continuar...");
-        fflush(stdin);
-        getchar();
+        getchar();        
     }
 }
 
@@ -241,7 +236,7 @@ int consultar_produtos() {
     buscas_pendentes = quantidade_de_consultas;
 
     if (quantidade_de_consultas > 10) {
-        printf("\nNão é possível realizar %i consultas de uma vez. O número máximo de consultas é 10", quantidade_de_consultas);
+        printf("\nNao é possível realizar %i consultas de uma vez. O número máximo de consultas é 10", quantidade_de_consultas);
         printf("\n\nPressione Enter para tentar novamente...");
         fflush(stdin);
         getchar();
@@ -363,16 +358,10 @@ int excluir_produtos() {
 @ Poder consultar Preco de produtos a partir de arquivo_produtos .txt
 - Processar compras (como um carrinho)
 - Excluir frutas do carrinho em quantidades especificas
-- Consultar condição atual do carrinho (ver produtos)
-- Função finalizar compra para retornar o total
+- Consultar condiÃ§Ã£o atual do carrinho (ver produtos)
+- FunÃ§Ã£o finalizar compra para retornar o total
 - Consultar todas as frutas disponiveis para compra
 - Poder consultar codigo do produtos a partir do seu nome
 - Controle de estoque
-
-
-AINDA TEM QUE FAZER
-
-- Consertar funcao de consultar produtos para printar uma mensagem caso o produto nao tiver sido achado
-- Deixar o txt bonito, cheio de produtos
 */
 
