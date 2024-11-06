@@ -47,7 +47,7 @@ int main() {
 
     // system("cls");
 
-    printf("CAIXA REGISTRADORA\n\n\n");
+    printf("\n\nCAIXA REGISTRADORA\n\n\n");
     printf("Digite o número de acordo com o serviço desejado:\n\n");
     printf("1. Consultar informações de produtos\n");
     printf("2. Adicionar produto ao carrinho de compras\n");
@@ -353,9 +353,9 @@ int finalizar_compra() {
     while (i < numero_de_produtos_no_carrinho) {
 
         valor_de_compra_produto = carrinho_com_itens[i].preco * carrinho_com_itens[i].quantidade / 1000;
-        quilogramas = carrinho_com_itens[i].quantidade / 1000;
+        quilogramas = (double) carrinho_com_itens[i].quantidade / 1000;
 
-        printf("\n%.3f quilos de %-30s %10.2f\n", quilogramas, carrinho_com_itens[i].nome, valor_de_compra_produto);
+        printf("\n%.3f quilos de %-30s R$%8.2f\n", quilogramas, carrinho_com_itens[i].nome, valor_de_compra_produto);
 
         total += (carrinho_com_itens[i].preco * carrinho_com_itens[i].quantidade / 1000);
         i++;
@@ -387,6 +387,7 @@ AINDA TEM QUE FAZER
 - Suportar input de quilogramas quando o usuário adicionar produto ao carrinho
 - Fazer duas adições ou mais ao carrinho do mesmo produto se somarem e contarem apenas como um item no carrinho
 - Erro na função 'adicionar_produto': mesmo que você digite o nome de um produto meio certo (ex.: "Per", ao invés de "Pera") o programa o procura, e salva o nome que o usuário escreveu no carrinho com nome escrito de forma incorreta
+- Diminuir a quantidade do produto armazenado no estoque após a função finalizar compra (já que o cliente comprou, o estoque diminuiu)
 
 
 */
