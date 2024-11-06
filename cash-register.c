@@ -345,17 +345,28 @@ int finalizar_compra() {
     int i = 0;
     double valor_de_compra_produto;
     double quilogramas;
+    int gramas;
 
     system("cls");
 
     printf("Número de itens: %d\n", numero_de_produtos_no_carrinho);
+    fflush(stdout);
 
     while (i < numero_de_produtos_no_carrinho) {
 
         valor_de_compra_produto = carrinho_com_itens[i].preco * carrinho_com_itens[i].quantidade / 1000;
         quilogramas = (double) carrinho_com_itens[i].quantidade / 1000;
+        gramas = carrinho_com_itens[i].quantidade;
+        fflush(stdout);
 
-        printf("\n%.3f quilos de %-30s R$%8.2f\n", quilogramas, carrinho_com_itens[i].nome, valor_de_compra_produto);
+        if (quilogramas >= 1) {
+            printf("\n%.0f quilos de %-30s R$%8.2f\n", quilogramas, carrinho_com_itens[i].nome, valor_de_compra_produto);
+        } else {
+            printf("\n%.0f gramas de %-30s R$%8.2f\n", gramas, carrinho_com_itens[i].nome, valor_de_compra_produto);
+        }
+
+        fflush(stdout);
+
 
         total += (carrinho_com_itens[i].preco * carrinho_com_itens[i].quantidade / 1000);
         i++;
@@ -363,7 +374,11 @@ int finalizar_compra() {
     }
 
     printf("\n-----------------------\n");
-    printf("Total: %.2f\n", total);
+    printf("Total: %.2f", total);
+    printf("\n-----------------------\n");
+
+    return 0;
+
 }
 
 
