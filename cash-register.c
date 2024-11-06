@@ -6,20 +6,21 @@
 #include <locale.h>
 
 
-// funcï¿½es
+// funções
 int adicionar_produto();
 int consultar_carrinho();
 void exibir_informacao(char mensagem[50]);
 int consultar_produtos();
 int excluir_produtos();
+int finalizar_compra();
 
-// variï¿½veis
+// variáveis
 int escolha_menu;
 int codigo_produto;
 int unidades_produto;
 int numero_de_produtos_no_carrinho = 0;
 
-// variï¿½veis especiais
+// variáveis especiais
 FILE* arquivo_produtos;
 typedef struct {
     char nome[100];
@@ -47,8 +48,8 @@ int main() {
     // system("cls");
 
     printf("CAIXA REGISTRADORA\n\n\n");
-    printf("Digite o nï¿½mero de acordo com o serviï¿½o desejado:\n\n");
-    printf("1. Consultar informaï¿½ï¿½es de produtos\n");
+    printf("Digite o número de acordo com o serviço desejado:\n\n");
+    printf("1. Consultar informações de produtos\n");
     printf("2. Adicionar produto ao carrinho de compras\n");
     printf("3. Excluir itens do carrinho de compras\n");
     printf("4. Consultar carrinho de compras\n");
@@ -69,15 +70,16 @@ int main() {
         break;
     case 4:
         consultar_carrinho();
+        exibir_informacao("continuar");
         break;
     case 5:
-        printf("\n\nEssa funcionalidade ainda nï¿½o estï¿½ disponï¿½vel\n");
+        finalizar_compra();
         break;
     case 6:
-        printf("\n\nEssa funcionalidade ainda nï¿½o estï¿½ disponï¿½vel\n");
+        printf("\n\nEssa funcionalidade ainda não está disponível\n");
         break;
     default:
-        printf("Nï¿½o hï¿½ um serviï¿½o correspondente ao caracter digitado. Tente novamente\n");
+        printf("Não há um serviço correspondente ao caracter digitado. Tente novamente\n");
         break;
     }
 
@@ -123,13 +125,13 @@ int adicionar_produto() {
                 if (strstr(linha, "Codigo") != NULL) {
                     fgets(linha, sizeof(linha), arquivo_produtos);
                     codigo = strtol(linha, &endpointer, 10);
-                    printf("\nCï¿½digo: %li", codigo);
+                    printf("\nCódigo: %li", codigo);
                 }
                 
                 if (strstr(linha, "Preco por quilograma") != NULL) {
                     fgets(linha, sizeof(linha), arquivo_produtos);
                     preco_por_quilograma = strtod(linha, &endpointer);
-                    printf("\nPreï¿½o por quilograma: R$ %.2f", preco_por_quilograma);
+                    printf("\nPreço por quilograma: R$ %.2f", preco_por_quilograma);
                 }
                 
                 if (strstr(linha, "Quantidade no estoque") != NULL) {
@@ -153,7 +155,7 @@ int adicionar_produto() {
 
     if (!resultado_busca) {
         system("cls");
-        printf("Item '%s' nï¿½o encontrado.\n", produto);
+        printf("Item '%s' não encontrado.\n", produto);
         exibir_informacao("padrao");
     } else {
         printf("\nItem adicionado ao carrinho");
@@ -171,7 +173,7 @@ int consultar_carrinho() {
     system("cls");
 
     if (numero_de_produtos_no_carrinho == 0) {
-        printf("Vocï¿½ ainda nï¿½o tem nenhum produto adicionado");
+        printf("Você ainda não tem nenhum produto adicionado");
         exibir_informacao("padrao");
         return 0;
     } else {
@@ -181,12 +183,10 @@ int consultar_carrinho() {
     for (int i = 0; i < numero_de_produtos_no_carrinho; i++) {
         printf("Produto %d: \n\n", i + 1);
         printf("Nome: %s", carrinho_com_itens[i].nome);
-        printf("\nPreï¿½o por quilograma: R$ %.2f\n", carrinho_com_itens[i].preco);
+        printf("\nPreço por quilograma: R$ %.2f\n", carrinho_com_itens[i].preco);
         printf("Quantidade (em gramas) no carrinho: %d\n", carrinho_com_itens[i].quantidade);
-        printf("Cï¿½digo: %d\n\n", carrinho_com_itens[i].codigo);
+        printf("Código: %d\n\n", carrinho_com_itens[i].codigo);
     }
-
-    exibir_informacao("continuar");
 
     }
 
@@ -236,13 +236,13 @@ int consultar_produtos() {
     buscas_pendentes = quantidade_de_consultas;
 
     if (quantidade_de_consultas > 10) {
-        printf("\nNao ï¿½ possï¿½vel realizar %i consultas de uma vez. O nï¿½mero mï¿½ximo de consultas ï¿½ 10", quantidade_de_consultas);
+        printf("\nNao é possível realizar %i consultas de uma vez. O número máximo de consultas é 10", quantidade_de_consultas);
         printf("\n\nPressione Enter para tentar novamente...");
         fflush(stdin);
         getchar();
         goto pergunta;
     } else if (quantidade_de_consultas <= 0) {
-        printf("\n\"%i\" nï¿½o ï¿½ um nï¿½mero vï¿½lido", quantidade_de_consultas);
+        printf("\n\"%i\" não é um número válido", quantidade_de_consultas);
         printf("\n\nPressione Enter para tentar novamente...");
         fflush(stdin);
         getchar();
@@ -252,7 +252,7 @@ int consultar_produtos() {
     printf("Escreva o nome do(s) produto(s): \n\n");
 
     for (int i = 0; i < quantidade_de_consultas; i++) {
-        scanf("%s", produtos[i]); // Armazena em produtos[i]
+        scanf("%s", produtos[i]);
     }
 
     // o "for" serve para procurar cada produto separadamente, enquanto o "while" procura apenas um Ã­ndice especÃ­fico do array de produtos
@@ -272,13 +272,13 @@ int consultar_produtos() {
                 if (strstr(linha, "Codigo") != NULL) {
                     fgets(linha, sizeof(linha), arquivo_produtos);
                     codigo = strtol(linha, &endpointer, 10);
-                    printf("\nCï¿½digo: %li", codigo);
+                    printf("\nCódigo: %li", codigo);
                 }
                 
                 if (strstr(linha, "Preco por quilograma") != NULL) {
                     fgets(linha, sizeof(linha), arquivo_produtos);
                     preco_por_quilograma = strtod(linha, &endpointer);
-                    printf("\nPreï¿½o por quilograma: R$ %.2f", preco_por_quilograma);
+                    printf("\nPreço por quilograma: R$ %.2f", preco_por_quilograma);
                 }
                 
                 if (strstr(linha, "Quantidade no estoque") != NULL) {
@@ -339,26 +339,48 @@ int excluir_produtos(){
     
 }
 
+int finalizar_compra() {
 
+    double total = 0;
+    int i = 0;
+
+    system("cls");
+
+    printf("Número de itens: %d\n", numero_de_produtos_no_carrinho);
+
+    while (i < numero_de_produtos_no_carrinho) {
+
+        printf("\n%-30s %10.2f\n", carrinho_com_itens[i].nome, carrinho_com_itens[i].preco);
+
+        total += (carrinho_com_itens[i].preco * carrinho_com_itens[i].quantidade / 1000);
+        i++;
+
+    }
+
+    printf("\n-----------------------\n");
+    printf("Total: %.2f\n", total);
+}
 
 
 
 /*REQUISITOS
 
 @ Poder consultar Preco de produtos a partir de arquivo_produtos .txt
-- Processar compras (como um carrinho)
+@ Processar compras (como um carrinho)
 - Excluir frutas do carrinho em quantidades especificas
-- Consultar condiÃ§Ã£o atual do carrinho (ver produtos)
-- FunÃ§Ã£o finalizar compra para retornar o total
-- Consultar todas as frutas disponiveis para compra
+@ Consultar condição atual do carrinho (ver produtos)
+- Função finalizar compra para retornar o total
+- Consultar todas as frutas disponíveis para compra
 - Poder consultar codigo do produtos a partir do seu nome
 - Controle de estoque
 
 AINDA TEM QUE FAZER
 
-- Consertar funcao de consultar produtos para printar uma mensagem caso o produto nao tiver sido achado
-- Deixar o txt bonito, cheio de produtos (falta MelÃ£o)
-- Bug que adiciona o produto ao carrinho mesmo que a funcao nao tenha achado
+- Consertar função de consultar produtos para printar uma mensagem caso o produto não tiver sido achado
+- Deixar o .txt bonito, cheio de produtos (falta melão)
+- Bug que adiciona o produto ao carrinho mesmo que a função não tenha achado
+- Suportar input de quilogramas quando o usuário adicionar produto ao carrinho
+- Fazer duas adições ou mais ao carrinho do mesmo produto se somarem e contarem apenas como um item no carrinho
 
 */
 
