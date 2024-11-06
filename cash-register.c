@@ -350,22 +350,21 @@ int finalizar_compra() {
     system("cls");
 
     printf("Número de itens: %d\n", numero_de_produtos_no_carrinho);
-    fflush(stdout);
 
     while (i < numero_de_produtos_no_carrinho) {
 
         valor_de_compra_produto = carrinho_com_itens[i].preco * carrinho_com_itens[i].quantidade / 1000;
         quilogramas = (double) carrinho_com_itens[i].quantidade / 1000;
         gramas = carrinho_com_itens[i].quantidade;
-        fflush(stdout);
 
-        if (quilogramas >= 1) {
-            printf("\n%.0f quilos de %-30s R$%8.2f\n", quilogramas, carrinho_com_itens[i].nome, valor_de_compra_produto);
-        } else {
-            printf("\n%.0f gramas de %-30s R$%8.2f\n", gramas, carrinho_com_itens[i].nome, valor_de_compra_produto);
-        }
+       if (quilogramas < 1) {
+        printf("\n%i gramas de %-30s R$%8.2f\n", gramas, carrinho_com_itens[i].nome, valor_de_compra_produto);
+       } else if (quilogramas < 2) {
+        printf("\n%.1f quilo de %-30s R$%10.2f\n", quilogramas, carrinho_com_itens[i].nome, valor_de_compra_produto);
+       } else {
+        printf("\n%.1f quilos de %-30s R$%8.2f\n", quilogramas, carrinho_com_itens[i].nome, valor_de_compra_produto);
+       }
 
-        fflush(stdout);
 
 
         total += (carrinho_com_itens[i].preco * carrinho_com_itens[i].quantidade / 1000);
@@ -376,6 +375,18 @@ int finalizar_compra() {
     printf("\n-----------------------\n");
     printf("Total: %.2f", total);
     printf("\n-----------------------\n");
+
+    printf("\n\nDeseja finalizar a compra? (s/n)");
+    char finalizar;
+    scanf("%c", finalizar);
+
+    if (finalizar == 's') {
+
+    } else if (finalizar == 'n') {
+
+    } else {
+
+    }
 
     return 0;
 
@@ -403,6 +414,7 @@ AINDA TEM QUE FAZER
 - Fazer duas adições ou mais ao carrinho do mesmo produto se somarem e contarem apenas como um item no carrinho
 - Erro na função 'adicionar_produto': mesmo que você digite o nome de um produto meio certo (ex.: "Per", ao invés de "Pera") o programa o procura, e salva o nome que o usuário escreveu no carrinho com nome escrito de forma incorreta
 - Diminuir a quantidade do produto armazenado no estoque após a função finalizar compra (já que o cliente comprou, o estoque diminuiu)
+- Erro na função consultar produtos: se o item que o usuário digitou não existe no .txt, o programa apenas dá output no que o usuário digitou. Deveria haver alguma mensagem de erro para o usuário tentar digitar de novo
 
 
 */
