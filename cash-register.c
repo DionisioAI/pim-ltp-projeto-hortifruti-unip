@@ -112,8 +112,28 @@ int adicionar_produto() {
     printf("\nQual produto quer adicionar? ");
     scanf("%s", produto);
 
-    printf("Quantas gramas? ");
-    scanf("%i", &quantidade);
+    char quilos_ou_gramas;
+    float entrada_quantidade;
+
+    quilos_ou_gramas:
+    printf("Quilos ou gramas (q/g)? ");
+    fflush(stdin);
+    scanf("%c", &quilos_ou_gramas);
+
+    if (quilos_ou_gramas == 'q') {
+        printf("Quantos quilos? ");
+        scanf("%f", &entrada_quantidade);
+        quantidade = (int)(entrada_quantidade * 1000);
+    } else if (quilos_ou_gramas == 'g') {
+        printf("Quantas gramas? ");
+        scanf("%i", &quantidade);  
+    } else {
+        printf("\nEsta não é uma opção válida, tente novamente");
+        fflush(stdin);
+        getchar();
+        goto quilos_ou_gramas;
+    }
+
 
     while (fgets(linha, sizeof(linha), arquivo_produtos) != NULL) { // procura o produto e printa as informacoes do .txt
         if (strstr(linha, produto) != NULL) {
@@ -173,7 +193,7 @@ int consultar_carrinho() {
     system("cls");
 
     if (numero_de_produtos_no_carrinho == 0) {
-        printf("Você ainda não tem nenhum produto adicionado");
+        printf("Você não tem nenhum produto adicionado ao carrinho");
         exibir_informacao("padrao");
         return 0;
     } else {
@@ -380,12 +400,17 @@ int finalizar_compra() {
     char finalizar;
     scanf("%c", finalizar);
 
+    finalizar:
+
     if (finalizar == 's') {
 
     } else if (finalizar == 'n') {
-
+        return 0;
     } else {
-
+        printf("\nEsta não é uma opção válida, tente novamente");
+        fflush(stdin);
+        getchar();
+        goto finalizar;
     }
 
     return 0;
@@ -401,7 +426,6 @@ int finalizar_compra() {
 - Excluir frutas do carrinho em quantidades especificas
 @ Consultar condição atual do carrinho (ver produtos)
 - Função finalizar compra para retornar o total
-- Consultar todas as frutas disponíveis para compra
 @ Poder consultar codigo do produtos a partir do seu nome
 - Controle de estoque
 
@@ -410,11 +434,12 @@ AINDA TEM QUE FAZER
 - Consertar função de consultar produtos para printar uma mensagem caso o produto não tiver sido achado
 - Deixar o .txt bonito, cheio de produtos (falta melão)
 - Bug que adiciona o produto ao carrinho mesmo que a função não tenha achado
-- Suportar input de quilogramas quando o usuário adicionar produto ao carrinho
+- Suportar input de quilogramas quando o usuário adicionar produto ao carrinho #####
 - Fazer duas adições ou mais ao carrinho do mesmo produto se somarem e contarem apenas como um item no carrinho
 - Erro na função 'adicionar_produto': mesmo que você digite o nome de um produto meio certo (ex.: "Per", ao invés de "Pera") o programa o procura, e salva o nome que o usuário escreveu no carrinho com nome escrito de forma incorreta
 - Diminuir a quantidade do produto armazenado no estoque após a função finalizar compra (já que o cliente comprou, o estoque diminuiu)
 - Erro na função consultar produtos: se o item que o usuário digitou não existe no .txt, o programa apenas dá output no que o usuário digitou. Deveria haver alguma mensagem de erro para o usuário tentar digitar de novo
+- Terminar função "finalizar compra"
 
 
 */
