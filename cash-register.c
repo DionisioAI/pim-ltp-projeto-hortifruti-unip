@@ -13,6 +13,7 @@ void exibir_informacao(char mensagem[50]);
 int consultar_produtos();
 int excluir_produtos();
 int finalizar_compra();
+int administrar_estoque();
 
 // variáveis
 int escolha_menu;
@@ -76,7 +77,7 @@ int main() {
         finalizar_compra();
         break;
     case 6:
-        printf("\n\nEssa funcionalidade ainda não está disponível\n");
+        administrar_estoque();
         break;
     default:
         printf("Não há um serviço correspondente ao caracter digitado. Tente novamente\n");
@@ -275,7 +276,7 @@ int consultar_produtos() {
         scanf("%s", produtos[i]);
     }
 
-    // o "for" serve para procurar cada produto separadamente, enquanto o "while" procura apenas um Ã­ndice especÃ­fico do array de produtos
+    // o "for" serve para procurar cada produto separadamente, enquanto o "while" procura apenas um í­ndice específico do array de produtos
     
     for (size_t j = 0; j < buscas_pendentes; j++)
     {
@@ -417,30 +418,127 @@ int finalizar_compra() {
 
 }
 
+int administrar_estoque() { // função para editar quantidade de produto no estoque e adicionar um novo produto no .txt
 
+    char linha[100];
+    char escolha;
+    char produto_editar[100];
+    unsigned int opcao_editar;
+    char palavra_chave[25];
+
+    opcao:
+    
+    system("cls");
+    printf("Quer editar informação de algum produto ou adicionar um novo produto (e/a)? ");
+    scanf("%c", &escolha);
+
+    switch (escolha)
+    {
+    case 'e':
+
+        ;
+        FILE* arquivo_produtos = fopen("produtos.txt", "r+");
+
+        if (arquivo_produtos == NULL) {
+            printf("Erro ao abrir o arquivo.\n");
+            return 1;
+        }
+
+        printf("\nQual produto quer editar? ");
+        scanf("%s", produto_editar);
+
+
+
+        editar:
+
+        printf("\nO que quer editar? \n1. Nome\n2. Código\n3. Preço\n4. Quantidade no estoque\n");
+        scanf("%i", &opcao_editar);
+
+        switch (opcao_editar) 
+        {
+            case 1:
+                ;
+                strcpy(palavra_chave, "Nome");
+                break;
+            case 2:
+                ;
+                strcpy(palavra_chave, "Codigo");
+                break;
+            case 3:
+                ;
+                strcpy(palavra_chave, "Preco");
+                break;
+            case 4:
+                ;
+                strcpy(palavra_chave, "Quantidade no estoque");
+                break;
+            default:
+                printf("Esta não é uma opção válida. Tente novamente");
+                fflush(stdin);
+                getchar();
+                goto editar;
+                break;
+            
+        }
+
+        while (fgets(linha, sizeof(linha), arquivo_produtos) != NULL) { // itera dentro do arquivo testando a condicional abaixo
+            if (strstr(linha, produto_editar) != NULL) { // procura pelo nome do produto que o usuário escolheu editar
+                while (fgets(linha, sizeof(linha), arquivo_produtos) != NULL) {
+                    if (strstr(linha, palavra_chave) != NULL) { // procura pela informação específica do produto
+                        fgets(linha, sizeof(linha), arquivo_produtos);
+                        long int linha_length = strlen(linha);
+                        printf("\n\nValor da linha ao procurar pela palavra-chave (ex.: Nome, Qtdd. no estoque): %s", linha);
+                        printf("\n%s atual do produto:\n%s", palavra_chave, linha);
+                        palavra_chave[0] = tolower(palavra_chave[0]); // converte a string "palavra_chave" para caracteres minúsculos
+                        printf("\nQual novo valor você deseja atribuir ao campo \"%s\"? ", palavra_chave);
+                        char valor_novo[100];
+                        scanf("%s", valor_novo);
+                        fseek(arquivo_produtos, linha_length, SEEK_CUR);
+                        fputs(valor_novo, arquivo_produtos);
+                    }
+                }
+            }
+        }
+
+        break;
+    case 'a':
+
+        break;
+    default:
+        printf("Esta não é uma opção válida. Tente novamente");
+        fflush(stdin);
+        getchar();
+        goto opcao;
+        break;
+    }
+
+
+}
 
 /*REQUISITOS
 
 @ Poder consultar Preco de produtos a partir de arquivo_produtos .txt
 @ Processar compras (como um carrinho)
-- Excluir frutas do carrinho em quantidades especificas
+- Excluir frutas do carrinho em quantidades especificas #####
 @ Consultar condição atual do carrinho (ver produtos)
-- Função finalizar compra para retornar o total
+@ Função finalizar compra para retornar o total
 @ Poder consultar codigo do produtos a partir do seu nome
-- Controle de estoque
+- Controle de estoque ########
 
 AINDA TEM QUE FAZER
 
 - Consertar função de consultar produtos para printar uma mensagem caso o produto não tiver sido achado
 - Deixar o .txt bonito, cheio de produtos (falta melão)
 - Bug que adiciona o produto ao carrinho mesmo que a função não tenha achado
-- Suportar input de quilogramas quando o usuário adicionar produto ao carrinho #####
 - Fazer duas adições ou mais ao carrinho do mesmo produto se somarem e contarem apenas como um item no carrinho
 - Erro na função 'adicionar_produto': mesmo que você digite o nome de um produto meio certo (ex.: "Per", ao invés de "Pera") o programa o procura, e salva o nome que o usuário escreveu no carrinho com nome escrito de forma incorreta
 - Diminuir a quantidade do produto armazenado no estoque após a função finalizar compra (já que o cliente comprou, o estoque diminuiu)
 - Erro na função consultar produtos: se o item que o usuário digitou não existe no .txt, o programa apenas dá output no que o usuário digitou. Deveria haver alguma mensagem de erro para o usuário tentar digitar de novo
-- Terminar função "finalizar compra"
+- Fazer as funções de procura/leitura do .txt funcionar com encoding Português (acentos e caracteres não inclusos no ASCII), sem dar falso positivo
+- Função administrar estoque (editar informacao de produto): Mostrar informacoes do produto depois do usuario digitar o nome (produto_editar) para facilitar visualização
 
+IDEIAS
 
+- Alguma das coisas que ainda tem que fazer 
 */
 
