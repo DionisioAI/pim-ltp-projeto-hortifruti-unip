@@ -59,9 +59,10 @@ Maca
 Codigo  
 7  
 Preco por quilograma  
-20  
+15,50
 Quantidade no estoque  
-0  
+1
+
 
 Nome  
 Uva  
@@ -479,6 +480,15 @@ Codigo
 Preco por quilograma  
 15  
 Quantidade no estoque  
+0 
+
+Nome  
+Nozes  
+Codigo  
+43
+Preco por quilograma  
+15  
+Quantidade no estoque  
 0  
 
 Nome  
@@ -497,54 +507,4 @@ Codigo
 Preco por quilograma  
 15  
 Quantidade no estoque  
-0  
-
-Nome  
-Castanhas  
-Codigo  
-42  
-Preco por quilograma  
-15  
-Quantidade no estoque  
-0  
-
-Nome  
-Nozes  
-Codigo  
-43 
-Preco por quilograma  
-15  
-Quantidade no estoque  
-0  
-
-Nome  
-Trigo  
-Codigo  
-40  
-Preco por quilograma  
-15  
-Quantidade no estoque  
-0  
-
-Nome  
-Amendoim  
-Codigo  
-41  
-Preco por quilograma  
-15  
-Quantidade no estoque  
-0  
-
-Nome  
-Castanhas  
-Codigo  
-42  
-Preco por quilograma  
-15  
-Quantidade no estoque  
-0  
-
-Nome  
-Nozes  
-Codigo  
-43 
+0

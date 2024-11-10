@@ -81,6 +81,7 @@ int main() {
         break;
     default:
         printf("Não há um serviço correspondente ao caracter digitado. Tente novamente\n");
+        exibir_informacao("padrao");
         break;
     }
 
@@ -397,7 +398,7 @@ int finalizar_compra() {
     printf("Total: %.2f", total);
     printf("\n-----------------------\n");
 
-    printf("\n\nDeseja finalizar a compra? (s/n)");
+    printf("\n\nDeseja finalizar a compra (s/n)? ");
     char finalizar;
     scanf("%c", finalizar);
 
@@ -437,7 +438,7 @@ int administrar_estoque() { // função para editar quantidade de produto no estoq
     case 'e':
 
         ;
-        FILE* arquivo_produtos = fopen("produtos.txt", "r+");
+        arquivo_produtos = fopen("produtos.txt", "r+");
 
         if (arquivo_produtos == NULL) {
             printf("Erro ao abrir o arquivo.\n");
@@ -446,8 +447,6 @@ int administrar_estoque() { // função para editar quantidade de produto no estoq
 
         printf("\nQual produto quer editar? ");
         scanf("%s", produto_editar);
-
-
 
         editar:
 
@@ -473,7 +472,7 @@ int administrar_estoque() { // função para editar quantidade de produto no estoq
                 strcpy(palavra_chave, "Quantidade no estoque");
                 break;
             default:
-                printf("Esta não é uma opção válida. Tente novamente");
+                printf("Esta não é uma opção válida. Aperte Enter para tentar novamente");
                 fflush(stdin);
                 getchar();
                 goto editar;
@@ -481,36 +480,125 @@ int administrar_estoque() { // função para editar quantidade de produto no estoq
             
         }
 
-        while (fgets(linha, sizeof(linha), arquivo_produtos) != NULL) { // itera dentro do arquivo testando a condicional abaixo
-            if (strstr(linha, produto_editar) != NULL) { // procura pelo nome do produto que o usuário escolheu editar
+        while (fgets(linha, sizeof(linha), arquivo_produtos) != NULL) { // lê linhas do arquivo
+            if (strstr(linha, produto_editar) != NULL) { // procura pelo nome do produto
+                // encontrou o produto, agora busca a chave específica (nome, código, etc.)
                 while (fgets(linha, sizeof(linha), arquivo_produtos) != NULL) {
-                    if (strstr(linha, palavra_chave) != NULL) { // procura pela informação específica do produto
-                        fgets(linha, sizeof(linha), arquivo_produtos);
-                        long int linha_length = strlen(linha);
-                        printf("\n\nValor da linha ao procurar pela palavra-chave (ex.: Nome, Qtdd. no estoque): %s", linha);
-                        printf("\n%s atual do produto:\n%s", palavra_chave, linha);
-                        palavra_chave[0] = tolower(palavra_chave[0]); // converte a string "palavra_chave" para caracteres minúsculos
+                    if (strstr(linha, palavra_chave) != NULL) { // encontrou a chave desejada
+                        // move para a próxima linha, onde está o valor a ser editado
+                        long pos_atual = ftell(arquivo_produtos); // salva a posição atual
+                        fgets(linha, sizeof(linha), arquivo_produtos); // lê o valor atual
+                        // mostra o valor atual ao usuário
+                        printf("\nValor atual de %s:\n%s", palavra_chave, linha);
+                        // solicita o novo valor ao usuário
                         printf("\nQual novo valor você deseja atribuir ao campo \"%s\"? ", palavra_chave);
                         char valor_novo[100];
-                        scanf("%s", valor_novo);
-                        fseek(arquivo_produtos, linha_length, SEEK_CUR);
-                        fputs(valor_novo, arquivo_produtos);
+                        scanf(" %[^\n]", valor_novo); // lê o valor com espaços
+                        // retorna ao início da linha onde o valor será substituído
+                        fseek(arquivo_produtos, pos_atual, SEEK_SET);
+                        // substitui o valor antigo pelo novo (sobrescrevendo)
+                        fprintf(arquivo_produtos, "%s\n", valor_novo);
+                        // garante que os dados sejam gravados no arquivo
+                        fflush(arquivo_produtos);
+                        // sai do loop após fazer a substituição
+                        break;
                     }
                 }
+
+                // sai do loop após encontrar e substituir a informação do produto
+                break;
             }
         }
+
+        fclose(arquivo_produtos);
 
         break;
     case 'a':
 
+        fflush(stdin);
+        arquivo_produtos = fopen("produtos.txt", "a");
+
+        if (arquivo_produtos == NULL) {
+            printf("Erro ao abrir o arquivo.\n");
+            return 1;
+        }
+
+        struct estrutura_produto {
+            char nome[100];
+            char codigo[100];
+            char preco[100];
+            char quantidade[100];
+        };
+
+        struct estrutura_produto produto_novo;
+
+        inserir_informacoes:
+
+        printf("\nQual o nome do produto? ");
+        gets(produto_novo.nome);
+
+        printf("\nQual o código do produto? ");
+        scanf("%s", produto_novo.codigo);
+
+        printf("\nQual o preço por quilograma do produto? ");
+        scanf("%s", produto_novo.preco);
+
+        printf("\nQuanto há no estoque deste produto (em quilos)? "); // consertar para aceitar valores em quilos e valores decimais
+        scanf("%s", produto_novo.quantidade);
+
+        // exibe o produto novo para o usuário
+
+        printf("\n\nINFORMAÇÕES DO NOVO PRODUTO");
+        printf("\n\nNome");
+        printf("\n%s", produto_novo.nome);
+        printf("\nCódigo");
+        printf("\n%s", produto_novo.codigo);
+        printf("\nPreço");
+        printf("\n%s", produto_novo.preco);
+        printf("\nQuantidade no estoque");
+        printf("\n%s\n\n", produto_novo.quantidade);
+
+        confirmacao:
+
+        printf("As informações estão corretas (s/n)? ");
+        fflush(stdin);
+        char confirmacao;
+        scanf("%c", &confirmacao);
+
+        fprintf(arquivo_produtos, "Nome");
+        fprintf(arquivo_produtos, "%s", produto_novo.nome);
+        fprintf(arquivo_produtos, "Codigo");
+        fprintf(arquivo_produtos, "%s", produto_novo.codigo);
+        fprintf(arquivo_produtos, "Preco");
+        fprintf(arquivo_produtos, "%s", produto_novo.preco);
+        fprintf(arquivo_produtos, "Quantidade no estoque");
+        fprintf(arquivo_produtos, "%s", produto_novo.quantidade);
+
+        if (confirmacao == 's') {
+            printf("\nProduto adicionado com sucesso!");
+            exibir_informacao("padrao");
+            break;
+        } else if (confirmacao == 'n') {
+            printf("Você voltará para inserir as informações do produto novamente ao pressionar Enter...\n");
+            fflush(stdin);
+            getchar();
+            goto inserir_informacoes;
+        } else {
+            printf("\nEsta não é uma opção válida. Aperte Enter para retornar à confirmação");
+            fflush(stdin);
+            getchar();
+            goto confirmacao;
+        }
+
         break;
     default:
-        printf("Esta não é uma opção válida. Tente novamente");
+        printf("Esta não é uma opção válida. Pressione Enter para tentar novamente");
         fflush(stdin);
         getchar();
         goto opcao;
         break;
     }
+
 
 
 }
@@ -536,6 +624,9 @@ AINDA TEM QUE FAZER
 - Erro na função consultar produtos: se o item que o usuário digitou não existe no .txt, o programa apenas dá output no que o usuário digitou. Deveria haver alguma mensagem de erro para o usuário tentar digitar de novo
 - Fazer as funções de procura/leitura do .txt funcionar com encoding Português (acentos e caracteres não inclusos no ASCII), sem dar falso positivo
 - Função administrar estoque (editar informacao de produto): Mostrar informacoes do produto depois do usuario digitar o nome (produto_editar) para facilitar visualização
+- Funcao consultar carrinho de compras: o usuario tem que apertar Enter duas vezes caso ele nao tenha nenhum produto adicionado ao carrinho. O ideal seria que ele precisasse apertar apenas uma vez
+- Erro na funcao administrar estoque (editar): ao atualizar informacao de qtdd. no estoque, um caracter de "Estoque" é removido. Também tem que tirar o "\n" que fica no final das informacoes do produto
+- Consultar produtos: poder consultar produtos que possuam espaco em seu nome
 
 IDEIAS
 
