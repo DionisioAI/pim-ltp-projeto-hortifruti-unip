@@ -271,7 +271,7 @@ int consultar_produtos() {
         goto pergunta;
     }
 
-    printf("Escreva o nome do(s) produto(s): \n\n");
+    printf("Escreva o nome do(s) produto(s): \n");
 
     for (int i = 0; i < quantidade_de_consultas; i++) {
         scanf("%s", produtos[i]);
@@ -535,7 +535,8 @@ int administrar_estoque() { // função para editar quantidade de produto no estoq
         inserir_informacoes:
 
         printf("\nQual o nome do produto? ");
-        gets(produto_novo.nome);
+        fgets(produto_novo.nome, sizeof(produto_novo), stdin);
+        produto_novo.nome[strcspn(produto_novo.nome, "\n")] = 0; // remover "\n" do input do produto
 
         printf("\nQual o código do produto? ");
         scanf("%s", produto_novo.codigo);
@@ -561,20 +562,22 @@ int administrar_estoque() { // função para editar quantidade de produto no estoq
         confirmacao:
 
         printf("As informações estão corretas (s/n)? ");
-        fflush(stdin);
+        getchar();
+
         char confirmacao;
         scanf("%c", &confirmacao);
 
-        fprintf(arquivo_produtos, "Nome");
-        fprintf(arquivo_produtos, "%s", produto_novo.nome);
-        fprintf(arquivo_produtos, "Codigo");
-        fprintf(arquivo_produtos, "%s", produto_novo.codigo);
-        fprintf(arquivo_produtos, "Preco");
-        fprintf(arquivo_produtos, "%s", produto_novo.preco);
-        fprintf(arquivo_produtos, "Quantidade no estoque");
-        fprintf(arquivo_produtos, "%s", produto_novo.quantidade);
 
         if (confirmacao == 's') {
+            fprintf(arquivo_produtos, "\n\nNome");
+            fprintf(arquivo_produtos, "\n%s", produto_novo.nome);
+            fprintf(arquivo_produtos, "\nCodigo");
+            fprintf(arquivo_produtos, "\n%s", produto_novo.codigo);
+            fprintf(arquivo_produtos, "\nPreco");
+            fprintf(arquivo_produtos, "\n%s", produto_novo.preco);
+            fprintf(arquivo_produtos, "\nQuantidade no estoque");
+            fprintf(arquivo_produtos, "\n%s", produto_novo.quantidade);
+            fclose(arquivo_produtos);
             printf("\nProduto adicionado com sucesso!");
             exibir_informacao("padrao");
             break;
@@ -590,7 +593,8 @@ int administrar_estoque() { // função para editar quantidade de produto no estoq
             goto confirmacao;
         }
 
-        break;
+        return 0;
+
     default:
         printf("Esta não é uma opção válida. Pressione Enter para tentar novamente");
         fflush(stdin);
