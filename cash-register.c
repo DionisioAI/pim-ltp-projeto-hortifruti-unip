@@ -433,6 +433,8 @@ int administrar_estoque() { // função para editar quantidade de produto no estoq
     char produto_editar[100];
     unsigned int opcao_editar;
     char palavra_chave[25];
+    char valor_novo[100];
+    long posicao_atual_ponteiro;
 
     opcao:
     
@@ -489,27 +491,40 @@ int administrar_estoque() { // função para editar quantidade de produto no estoq
 
         while (fgets(linha, sizeof(linha), arquivo_produtos) != NULL) { // lê linhas do arquivo
             if (strstr(linha, produto_editar) != NULL) { // procura pelo nome do produto
+                if (opcao_editar == 1) { // se o usuário quiser editar o nome
+                    int length_linha = strlen(linha);
+                    posicao_atual_ponteiro = ftell(arquivo_produtos);
+                    // tem que pegar o length da linha e voltar esse valor com fseek
+                    printf("\nValor atual de \"%s\":\n%s", palavra_chave, linha);
+                    printf("\nQual novo valor você deseja atribuir ao campo \"%s\"? ", palavra_chave);
+                    scanf(" %[^\n]", valor_novo); // lê o valor com espaços
+                    fseek(arquivo_produtos, posicao_atual_ponteiro - (length_linha + 1), SEEK_SET);
+                    fprintf(arquivo_produtos, "%s", valor_novo);
+                    fclose(arquivo_produtos);
+                    break;
+
+                } else {
                 // encontrou o produto, agora busca a chave específica (nome, código, etc.)
                 while (fgets(linha, sizeof(linha), arquivo_produtos) != NULL) {
                     if (strstr(linha, palavra_chave) != NULL) { // encontrou a chave desejada
                         // move para a próxima linha, onde está o valor a ser editado
-                        long pos_atual = ftell(arquivo_produtos); // salva a posição atual
+                        posicao_atual_ponteiro = ftell(arquivo_produtos); // salva a posição atual
                         fgets(linha, sizeof(linha), arquivo_produtos); // lê o valor atual
                         // mostra o valor atual ao usuário
-                        printf("\nValor atual de %s:\n%s", palavra_chave, linha);
+                        printf("\nValor atual de \"%s\":\n%s", palavra_chave, linha);
                         // solicita o novo valor ao usuário
                         printf("\nQual novo valor você deseja atribuir ao campo \"%s\"? ", palavra_chave);
-                        char valor_novo[100];
                         scanf(" %[^\n]", valor_novo); // lê o valor com espaços
                         // retorna ao início da linha onde o valor será substituído
-                        fseek(arquivo_produtos, pos_atual, SEEK_SET);
+                        fseek(arquivo_produtos, posicao_atual_ponteiro, SEEK_SET);
                         // substitui o valor antigo pelo novo (sobrescrevendo)
-                        fprintf(arquivo_produtos, "%s\n", valor_novo);
+                        fprintf(arquivo_produtos, "%s", valor_novo);
                         // garante que os dados sejam gravados no arquivo
                         fflush(arquivo_produtos);
                         // sai do loop após fazer a substituição
                         break;
                     }
+                }
                 }
 
                 // sai do loop após encontrar e substituir a informação do produto
