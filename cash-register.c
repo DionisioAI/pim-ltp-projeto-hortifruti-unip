@@ -71,10 +71,11 @@ int main() {
         break;
     case 4:
         consultar_carrinho();
-        exibir_informacao("continuar");
         break;
     case 5:
-        finalizar_compra();
+        if (finalizar_compra() == -1) { 
+            menu = 0; 
+        }
         break;
     case 6:
         administrar_estoque();
@@ -153,7 +154,7 @@ int adicionar_produto() {
                 if (strstr(linha, "Preco por quilograma") != NULL) {
                     fgets(linha, sizeof(linha), arquivo_produtos);
                     preco_por_quilograma = strtod(linha, &endpointer);
-                    printf("\nPreço por quilograma: R$ %.2f", preco_por_quilograma);
+                    printf("\nPreço por quilograma: R$ %.2lf", preco_por_quilograma);
                 }
                 
                 if (strstr(linha, "Quantidade no estoque") != NULL) {
@@ -167,19 +168,16 @@ int adicionar_produto() {
         }
     }
 
-    // atualiza o array do carrinho com o item adicionado
-
-    strcpy(carrinho_com_itens[numero_de_produtos_no_carrinho].nome, produto);
-    carrinho_com_itens[numero_de_produtos_no_carrinho].preco = preco_por_quilograma;
-    carrinho_com_itens[numero_de_produtos_no_carrinho].quantidade = quantidade;
-    carrinho_com_itens[numero_de_produtos_no_carrinho].codigo = codigo;
-    numero_de_produtos_no_carrinho++;
-
     if (!resultado_busca) {
         system("cls");
         printf("Item '%s' não encontrado.\n", produto);
         exibir_informacao("padrao");
     } else {
+        strcpy(carrinho_com_itens[numero_de_produtos_no_carrinho].nome, produto); // atualiza o array do carrinho com o item adicionado
+        carrinho_com_itens[numero_de_produtos_no_carrinho].preco = preco_por_quilograma;
+        carrinho_com_itens[numero_de_produtos_no_carrinho].quantidade = quantidade;
+        carrinho_com_itens[numero_de_produtos_no_carrinho].codigo = codigo;
+        numero_de_produtos_no_carrinho++;
         printf("\nItem adicionado ao carrinho");
         exibir_informacao("padrao");
         system("cls");
@@ -247,13 +245,14 @@ int consultar_produtos() {
 
     char nome[100];
     double preco_por_quilograma;
-    int codigo;
+    long int codigo;
     long int estoque;
 
     pergunta:
 
     printf("\nQuer consultar quantos produtos? ");
     scanf("%i", &quantidade_de_consultas);
+    getchar();
 
     buscas_pendentes = quantidade_de_consultas;
 
@@ -271,7 +270,11 @@ int consultar_produtos() {
         goto pergunta;
     }
 
-    printf("Escreva o nome do(s) produto(s): \n");
+    if (quantidade_de_consultas == 1) {
+        printf("Escreva o nome do produto: \n");
+    } else {
+        printf("Escreva o nome dos produtos: \n");
+    }
 
     for (int i = 0; i < quantidade_de_consultas; i++) {
         scanf("%s", produtos[i]);
@@ -279,41 +282,53 @@ int consultar_produtos() {
 
     // o "for" serve para procurar cada produto separadamente, enquanto o "while" procura apenas um í­ndice específico do array de produtos
     
-    for (size_t j = 0; j < buscas_pendentes; j++)
-    {
-        printf("\n%s", produtos[j]);
+    for (size_t j = 0; j < buscas_pendentes; j++) {
+        int encontrado = 0;
         rewind(arquivo_produtos);
 
         while (fgets(linha, sizeof(linha), arquivo_produtos) != NULL) { // procura os produtos e printa as informacoes do .txt
-        if (strstr(linha, produtos[j]) != NULL) {
-            strcpy(nome, produtos[j]);
+            if (strstr(linha, produtos[j]) != NULL) {
 
-            for (int i = 0; i < 6; i++) {
+                encontrado = 1;
+
+                // leitura e impressão das informações do produto
                 fgets(linha, sizeof(linha), arquivo_produtos);
-                
-                if (strstr(linha, "Codigo") != NULL) {
-                    fgets(linha, sizeof(linha), arquivo_produtos);
-                    codigo = strtol(linha, &endpointer, 10);
-                    printf("\nCódigo: %li", codigo);
+                strcpy(nome, linha);
+                printf("Nome: %s", nome);
+
+                for (int i = 0; i < 6; i++) {
+                    if (strstr(linha, "Codigo") != NULL) {
+                        fgets(linha, sizeof(linha), arquivo_produtos);
+                        codigo = strtol(linha, &endpointer, 10);
+                        printf("\nCódigo: %li", codigo);
+                    }
+                    
+                    if (strstr(linha, "Preco por quilograma") != NULL) {
+                        fgets(linha, sizeof(linha), arquivo_produtos);
+                        preco_por_quilograma = strtod(linha, &endpointer);
+                        printf("\nPreço por quilograma: R$ %lf", preco_por_quilograma);
+                    }
+                    
+                    if (strstr(linha, "Quantidade no estoque") != NULL) {
+                        fgets(linha, sizeof(linha), arquivo_produtos);
+                        estoque = strtol(linha, &endpointer, 10);
+                        printf("\nQuantidade no estoque: %li\n", estoque);
+                    }
+
                 }
-                
-                if (strstr(linha, "Preco por quilograma") != NULL) {
-                    fgets(linha, sizeof(linha), arquivo_produtos);
-                    preco_por_quilograma = strtod(linha, &endpointer);
-                    printf("\nPreço por quilograma: R$ %.2f", preco_por_quilograma);
-                }
-                
-                if (strstr(linha, "Quantidade no estoque") != NULL) {
-                    fgets(linha, sizeof(linha), arquivo_produtos);
-                    estoque = strtol(linha, &endpointer, 10);
-                    printf("\nQuantidade no estoque: %li\n", estoque);
-                }
+
+                break;
 
             }
 
-            break;
         }
 
+        if (!encontrado) {
+            printf("\nNão há um produto chamado \"%s\" no sistema.\n", produtos[j]);
+            printf("Pressione Enter para retornar ao menu...\n");
+            getchar();
+            fclose(arquivo_produtos);
+            return 0;
         }
 
         rewind(arquivo_produtos);
@@ -326,7 +341,7 @@ int consultar_produtos() {
 
 }
 
-int excluir_produtos(){
+int excluir_produtos() {
 
     if (numero_de_produtos_no_carrinho <= 0) {
         system("cls");
@@ -398,22 +413,23 @@ int finalizar_compra() {
     printf("Total: %.2f", total);
     printf("\n-----------------------\n");
 
-    printf("\n\nDeseja finalizar a compra (s/n)? ");
-    char finalizar;
-    scanf("%c", finalizar);
+     char finalizar;
 
-    finalizar:
+    do {
+        printf("\n\nDeseja finalizar a compra (s/n)? ");
+        scanf(" %c", &finalizar);  // Note o espaço antes de %c para ignorar caracteres em branco
 
-    if (finalizar == 's') {
+        if (finalizar == 's') {
+            printf("\nCompra encerrada!\n");
+            return -1; // Retorna ao main e finaliza
+        } else if (finalizar == 'n') {
+            // Volta para o menu no main()
+            break;
+        } else {
+            printf("\nEsta não é uma opção válida, tente novamente.\n");
+        }
 
-    } else if (finalizar == 'n') {
-        return 0;
-    } else {
-        printf("\nEsta não é uma opção válida, tente novamente");
-        fflush(stdin);
-        getchar();
-        goto finalizar;
-    }
+    } while (1);
 
     return 0;
 
@@ -567,7 +583,6 @@ int administrar_estoque() { // função para editar quantidade de produto no estoq
         char confirmacao;
         scanf("%c", &confirmacao);
 
-
         if (confirmacao == 's') {
             fprintf(arquivo_produtos, "\n\nNome");
             fprintf(arquivo_produtos, "\n%s", produto_novo.nome);
@@ -603,37 +618,4 @@ int administrar_estoque() { // função para editar quantidade de produto no estoq
         break;
     }
 
-
-
 }
-
-/*REQUISITOS
-
-@ Poder consultar Preco de produtos a partir de arquivo_produtos .txt
-@ Processar compras (como um carrinho)
-- Excluir frutas do carrinho em quantidades especificas #####
-@ Consultar condição atual do carrinho (ver produtos)
-@ Função finalizar compra para retornar o total
-@ Poder consultar codigo do produtos a partir do seu nome
-- Controle de estoque ########
-
-AINDA TEM QUE FAZER
-
-- Consertar função de consultar produtos para printar uma mensagem caso o produto não tiver sido achado
-- Deixar o .txt bonito, cheio de produtos (falta melão)
-- Bug que adiciona o produto ao carrinho mesmo que a função não tenha achado
-- Fazer duas adições ou mais ao carrinho do mesmo produto se somarem e contarem apenas como um item no carrinho
-- Erro na função 'adicionar_produto': mesmo que você digite o nome de um produto meio certo (ex.: "Per", ao invés de "Pera") o programa o procura, e salva o nome que o usuário escreveu no carrinho com nome escrito de forma incorreta
-- Diminuir a quantidade do produto armazenado no estoque após a função finalizar compra (já que o cliente comprou, o estoque diminuiu)
-- Erro na função consultar produtos: se o item que o usuário digitou não existe no .txt, o programa apenas dá output no que o usuário digitou. Deveria haver alguma mensagem de erro para o usuário tentar digitar de novo
-- Fazer as funções de procura/leitura do .txt funcionar com encoding Português (acentos e caracteres não inclusos no ASCII), sem dar falso positivo
-- Função administrar estoque (editar informacao de produto): Mostrar informacoes do produto depois do usuario digitar o nome (produto_editar) para facilitar visualização
-- Funcao consultar carrinho de compras: o usuario tem que apertar Enter duas vezes caso ele nao tenha nenhum produto adicionado ao carrinho. O ideal seria que ele precisasse apertar apenas uma vez
-- Erro na funcao administrar estoque (editar): ao atualizar informacao de qtdd. no estoque, um caracter de "Estoque" é removido. Também tem que tirar o "\n" que fica no final das informacoes do produto
-- Consultar produtos: poder consultar produtos que possuam espaco em seu nome
-
-IDEIAS
-
-- Alguma das coisas que ainda tem que fazer 
-*/
-

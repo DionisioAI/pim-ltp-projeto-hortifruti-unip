@@ -1,13 +1,13 @@
 Frutas:
 
-Nome  
-Banana  
-Codigo  
-1  
-Preco por quilograma  
-10.5  
-Quantidade no estoque  
-3  
+Nome
+Banana
+Codigo
+1
+Preco por quilograma
+10.5
+Quantidade no estoque
+3
 
 Nome  
 Morango 
@@ -508,3 +508,12 @@ Preco por quilograma
 15  
 Quantidade no estoque  
 0
+
+Nome
+Melao
+Codigo
+44
+Preco
+15
+Quantidade no estoque
+5
