@@ -1,134 +1,5 @@
 Frutas:
 
-Nome
-Banana
-Codigo
-1
-Preco por quilograma
-10.5
-Quantidade no estoque
-3
-
-Nome  
-Morango 
-Codigo  
-2  
-Preco por quilograma  
-20  
-Quantidade no estoque  
-0  
-
-Nome  
-Laranja  
-Codigo  
-3  
-Preco por quilograma  
-20  
-Quantidade no estoque  
-0  
-
-Nome  
-Mamao  
-Codigo  
-4  
-Preco por quilograma  
-20  
-Quantidade no estoque  
-0  
-
-Nome  
-Melancia  
-Codigo  
-5  
-Preco por quilograma  
-20  
-Quantidade no estoque  
-0  
-
-Nome  
-Limao  
-Codigo  
-6  
-Preco por quilograma  
-20  
-Quantidade no estoque  
-0  
-
-Nome  
-Maca  
-Codigo  
-7  
-Preco por quilograma  
-15,50
-Quantidade no estoque  
-1
-
-
-Nome  
-Uva  
-Codigo  
-8  
-Preco por quilograma  
-20  
-Quantidade no estoque  
-0  
-
-Nome  
-Goiaba  
-Codigo  
-9  
-Preco por quilograma  
-20  
-Quantidade no estoque  
-0  
-
-Nome  
-Abacaxi  
-Codigo  
-10  
-Preco por quilograma  
-20  
-Quantidade no estoque  
-0  
-
-Nome  
-Manga  
-Codigo  
-11  
-Preco por quilograma  
-20  
-Quantidade no estoque  
-0  
-
-Nome  
-Kiwi  
-Codigo  
-12  
-Preco por quilograma  
-20  
-Quantidade no estoque  
-0  
-
-Nome  
-Ameixa  
-Codigo  
-13  
-Preco por quilograma  
-20  
-Quantidade no estoque  
-0  
-
-Nome  
-Pera  
-Codigo  
-14  
-Preco por quilograma  
-20  
-Quantidade no estoque  
-0  
-
-No15utas:
-
 Nome  
 Banana  
 Codigo  
@@ -139,130 +10,130 @@ Quantidade no estoque
 3  
 
 Nome  
-Morango 
+Morango  
 Codigo  
 2  
 Preco por quilograma  
 20  
 Quantidade no estoque  
-0  
+5  
 
 Nome  
 Laranja  
 Codigo  
 3  
 Preco por quilograma  
-20  
+7  
 Quantidade no estoque  
-0  
+10  
 
 Nome  
 Mamao  
 Codigo  
 4  
 Preco por quilograma  
-20  
+8  
 Quantidade no estoque  
-0  
+2  
 
 Nome  
 Melancia  
 Codigo  
 5  
 Preco por quilograma  
-20  
+6  
 Quantidade no estoque  
-0  
+15  
 
 Nome  
 Limao  
 Codigo  
 6  
 Preco por quilograma  
-20  
+6  
 Quantidade no estoque  
-0  
+8  
 
 Nome  
 Maca  
 Codigo  
 7  
 Preco por quilograma  
-20  
+15.50  
 Quantidade no estoque  
-0  
+1  
 
 Nome  
 Uva  
 Codigo  
 8  
 Preco por quilograma  
-20  
+25  
 Quantidade no estoque  
-0  
+7  
 
 Nome  
 Goiaba  
 Codigo  
 9  
 Preco por quilograma  
-20  
+12  
 Quantidade no estoque  
-0  
+4  
 
 Nome  
 Abacaxi  
 Codigo  
 10  
 Preco por quilograma  
-20  
+10  
 Quantidade no estoque  
-0  
+9  
 
 Nome  
 Manga  
 Codigo  
 11  
 Preco por quilograma  
-20  
+18  
 Quantidade no estoque  
-0  
+6  
 
 Nome  
 Kiwi  
 Codigo  
 12  
 Preco por quilograma  
-20  
+30  
 Quantidade no estoque  
-0  
+3  
 
 Nome  
 Ameixa  
 Codigo  
 13  
 Preco por quilograma  
-20  
+25  
 Quantidade no estoque  
-0  
+2  
 
 Nome  
 Pera  
 Codigo  
 14  
 Preco por quilograma  
-20  
+16  
 Quantidade no estoque  
-0  
+5  
 
 Nome  
 Mexerica  
 Codigo  
 15  
 Preco por quilograma  
-20  
+7  
 Quantidade no estoque  
-0  
+13  
 
 Nome  
 Maracuja  
@@ -271,249 +142,312 @@ Codigo
 Preco por quilograma  
 20  
 Quantidade no estoque  
-0  
+5  
 
 Nome  
 Pessego  
 Codigo  
 17  
 Preco por quilograma  
-20  
+22  
 Quantidade no estoque  
-0  
+4  
 
 Nome  
 Abacate  
 Codigo  
 18  
 Preco por quilograma  
-20  
+12  
 Quantidade no estoque  
-0  
+3  
+
+Nome  
+Jaca  
+Codigo  
+19  
+Preco por quilograma  
+5  
+Quantidade no estoque  
+20  
+
+Nome  
+Caqui  
+Codigo  
+20  
+Preco por quilograma  
+18  
+Quantidade no estoque  
+8  
+
+Nome  
+Cabeludinha  
+Codigo  
+21  
+Preco por quilograma  
+35  
+Quantidade no estoque  
+2  
+
+Nome  
+Cabeludinha  
+Codigo  
+22  
+Preco por quilograma  
+35  
+Quantidade no estoque  
+2  
 
 Legumes:
 
 Nome  
 Cenoura  
 Codigo  
-19  
+23  
 Preco por quilograma  
-15  
+6  
 Quantidade no estoque  
-0  
+10  
 
 Nome  
 Abobrinha  
 Codigo  
-20  
+24  
 Preco por quilograma  
-4
+4  
 Quantidade no estoque  
-0  
+8  
 
 Nome  
 Quiabo  
 Codigo  
-21  
+25  
 Preco por quilograma  
-15  
+8  
 Quantidade no estoque  
-0  
+7  
 
 Nome  
 Chuchu  
 Codigo  
-22  
+26  
 Preco por quilograma  
-15  
+5  
 Quantidade no estoque  
-0  
+12  
 
 Nome  
 Abobora  
 Codigo  
-23  
+27  
 Preco por quilograma  
-15  
+10  
 Quantidade no estoque  
-0  
+5  
 
 Nome  
 Beringela  
 Codigo  
-24  
+28  
 Preco por quilograma  
-15  
+8  
 Quantidade no estoque  
-0  
+6  
 
 Nome  
 Pepino  
 Codigo  
-25  
+29  
 Preco por quilograma  
-15  
+6  
 Quantidade no estoque  
-0  
+9  
 
 Nome  
 Tomate  
 Codigo  
-26  
+30  
 Preco por quilograma  
-15  
+10  
 Quantidade no estoque  
-0  
+6  
 
 Nome  
 Mandioca  
 Codigo  
-27  
+31  
 Preco por quilograma  
-15  
+4  
 Quantidade no estoque  
-0  
+15  
 
 Nome  
 Beterraba  
 Codigo  
-28  
+32  
 Preco por quilograma  
-15  
+7  
 Quantidade no estoque  
-0  
+11  
 
 Nome  
 Alho  
 Codigo  
-29  
+33  
 Preco por quilograma  
-15  
+30  
 Quantidade no estoque  
-0  
+2  
 
 Nome  
 Cebola  
 Codigo  
-30  
+34  
 Preco por quilograma  
-15  
+8  
 Quantidade no estoque  
-0  
+14  
 
 Nome  
 Batata  
 Codigo  
-31  
+35  
 Preco por quilograma  
-15  
+4  
 Quantidade no estoque  
-0  
+20  
 
 Nome  
 Batata-doce  
 Codigo  
-32  
+36  
 Preco por quilograma  
-15  
+6  
 Quantidade no estoque  
-0  
+18  
 
 Nome  
 Inhame  
 Codigo  
-33  
+37  
 Preco por quilograma  
-15  
+5  
 Quantidade no estoque  
-0  
+8  
 
 Nome  
 Feijao  
 Codigo  
-34  
+38  
 Preco por quilograma  
-15  
+10  
 Quantidade no estoque  
-0  
+3  
 
 Nome  
 Grao-de-bico  
 Codigo  
-35  
+39  
 Preco por quilograma  
-15  
+12  
 Quantidade no estoque  
-0  
+4  
 
 Nome  
 Soja  
 Codigo  
-36  
+40  
 Preco por quilograma  
-15  
+8  
 Quantidade no estoque  
-0  
+9  
 
 Nome  
 Ervilha  
 Codigo  
-37  
+41  
 Preco por quilograma  
-15  
+12  
 Quantidade no estoque  
-0  
+7  
 
 Nome  
 Milho  
 Codigo  
-38  
+42  
 Preco por quilograma  
-15  
+5  
 Quantidade no estoque  
-0  
+25  
 
 Nome  
 Arroz  
 Codigo  
-39  
+43  
 Preco por quilograma  
-15  
+3  
 Quantidade no estoque  
-0 
+30  
 
 Nome  
 Nozes  
 Codigo  
-43
+44  
 Preco por quilograma  
-15  
+50  
 Quantidade no estoque  
-0  
+1  
 
 Nome  
 Trigo  
 Codigo  
-40  
+45  
 Preco por quilograma  
-15  
+4  
 Quantidade no estoque  
-0  
+10  
 
 Nome  
 Amendoim  
 Codigo  
-41  
+46  
 Preco por quilograma  
-15  
+12  
 Quantidade no estoque  
-0
+8  
+
+Nome  
+Melao  
+Codigo  
+47  
+Preco por quilograma  
+12  
+Quantidade no estoque  
+5
 
 Nome
-Melao
+Brocolis
 Codigo
-44
+48
 Preco por quilograma
-15
+4.20
 Quantidade no estoque
-5
+18
+
+Nome
+Acerola
+Codigo
+49
+Preco por quilograma
+17.3
+Quantidade no estoque
+28
+
+Nome
+Cacau
+Codigo
+50
+Preco por quilograma
+10
+Quantidade no estoque
+10
