@@ -492,14 +492,16 @@ int administrar_estoque() { // função para editar quantidade de produto no estoq
         while (fgets(linha, sizeof(linha), arquivo_produtos) != NULL) { // lê linhas do arquivo
             if (strstr(linha, produto_editar) != NULL) { // procura pelo nome do produto
                 if (opcao_editar == 1) { // se o usuário quiser editar o nome
-                    int length_linha = strlen(linha);
-                    posicao_atual_ponteiro = ftell(arquivo_produtos);
-                    // tem que pegar o length da linha e voltar esse valor com fseek
+                    int length_linha = strlen(linha); // guarda o tamanho da string do nome do produto
+                    posicao_atual_ponteiro = ftell(arquivo_produtos); // guarda posição do ponteiro (início do nome do produto)
                     printf("\nValor atual de \"%s\":\n%s", palavra_chave, linha);
                     printf("\nQual novo valor você deseja atribuir ao campo \"%s\"? ", palavra_chave);
                     scanf(" %[^\n]", valor_novo); // lê o valor com espaços
                     fseek(arquivo_produtos, posicao_atual_ponteiro - (length_linha + 1), SEEK_SET);
+                    long outra_posicao = ftell(arquivo_produtos);
                     fprintf(arquivo_produtos, "%s", valor_novo);
+                    fseek(arquivo_produtos, outra_posicao + strlen(valor_novo), SEEK_SET);
+                    fprintf(arquivo_produtos, "                         ");
                     fclose(arquivo_produtos);
                     break;
 
