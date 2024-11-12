@@ -513,7 +513,7 @@ Nome
 Melao
 Codigo
 44
-Preco
+Preco por quilograma
 15
 Quantidade no estoque
 5
