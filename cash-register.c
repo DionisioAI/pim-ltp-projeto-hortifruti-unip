@@ -215,6 +215,8 @@ int consultar_carrinho() {
 
     }
 
+    exibir_informacao("padrao");
+
     return 0;
 
 }
