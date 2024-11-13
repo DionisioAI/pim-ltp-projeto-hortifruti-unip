@@ -30,12 +30,13 @@ typedef struct {
     int codigo;
 } item_carrinho;
 item_carrinho carrinho_com_itens[100]; // array do carrinho de compras
+int menu = 1;
 
 int main() {
 
     setlocale(LC_ALL, "Portuguese");
 
-    int menu = 1;
+    menu = 1;
 
     while (menu) {
 
@@ -71,7 +72,6 @@ int main() {
         break;
     case 4:
         consultar_carrinho();
-        exibir_informacao("continuar");
         break;
     case 5:
         finalizar_compra();
@@ -407,12 +407,14 @@ int finalizar_compra() {
 
     printf("\n\nDeseja finalizar a compra (s/n)? ");
     char finalizar;
-    scanf("%c", finalizar);
+    scanf(" %c", &finalizar);
 
     finalizar:
 
     if (finalizar == 's') {
-
+        printf("\nCompra finalizada com sucesso!");
+        menu = 0;
+        return 1;
     } else if (finalizar == 'n') {
         return 0;
     } else {
